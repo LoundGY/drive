@@ -1,0 +1,12 @@
+<div
+  class="fields"
+  [class.checked]="checked === true"
+  (click)="checked = !checked"
+>
+  <div class="fields__field"><input type="checkbox" [checked]="checked" /></div>
+  <div class="fields__field">{{ file.name }}</div>
+  <div class="fields__field">{{ file.author }}</div>
+  <div class="fields__field">{{ file.size }}</div>
+  <div class="fields__field">{{ file.category }}</div>
+  <div class="fields__field">{{ file.date | date: "dd.MM.yyyy, HH:MM" }}</div>
+</div>

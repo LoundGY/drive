@@ -1,0 +1,18 @@
+<div class="mainMenu">
+  <h1 class="mainMenu__drive">Drive</h1>
+  <div class="mainMenu__addFileButton">
+    <span class="text">Добавить</span>{{ " " }}
+    <img class="largePlus" src="{{ plus }}" />
+  </div>
+  <ul class="mainMenu__menu">
+    <li
+      *ngFor="let item of menuItems; let i = index"
+      class="menu-point"
+      [class.active]="index === i"
+      (click)="changeIndex(i)"
+    >
+      {{ item }}
+    </li>
+  </ul>
+</div>
+<app-files [files]="files"></app-files>

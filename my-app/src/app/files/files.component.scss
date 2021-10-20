@@ -1,0 +1,79 @@
+.mainBlock {
+    position: absolute;
+    left: 307px;
+    height: calc(100% - 136px);
+    width: calc(100% - 359px);
+    padding-top: 35px;
+    padding-left: 52px;
+    box-sizing: border-box;
+    &__search {
+        position: relative;
+        width: 543px;
+        height: 42px;
+        .search {
+            width: 543px;
+            height: 42px;
+            border-radius: 20px;
+            outline: none;
+            padding: 0 37px;
+            box-sizing: border-box;
+            border: none;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.45) inset;
+            &::before {
+                content: "";
+            }
+        }
+        .search-icon {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: url("../../assets/img/search.svg");
+            width: 11.5px;
+            height: 11.5px;
+        }
+    }
+    &__files {
+        margin-top: 29px;
+        background: #ffffff;
+        z-index: 1;
+        height: calc(100% - 71px);
+        width: 100%;
+        box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.05);
+        border-radius: 15px;
+        box-sizing: border-box;
+        .files__fields {
+            display: grid;
+            height: 49px;
+            line-height: 49px;
+            background: #fdc303;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+            grid-template-columns: 50px repeat(5, calc(20% - 10px));
+        }
+        .field {
+            position: relative;
+            cursor: pointer;
+            &:not(:last-child)::after {
+                content: "";
+                position: absolute;
+                right: 0;
+                top: 17px;
+                background: #777777;
+                height: 18px;
+                width: 1px;
+            }
+            .up::after {
+                content: "▲";
+                cursor: pointer;
+                position: relative;
+                font-size: 20px;
+            }
+            .down::after {
+                cursor: pointer;
+                content: "▼";
+                position: relative;
+                font-size: 20px;
+            }
+        }
+    }
+}

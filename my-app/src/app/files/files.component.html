@@ -1,0 +1,36 @@
+<div class="mainBlock">
+  <div class="mainBlock__search">
+    <div class="search-icon"></div>
+    <input
+      [(ngModel)]="search"
+      (ngModelChange)="updateSearch()"
+      class="search"
+      placeholder="Искать"
+      type="text"
+      name="search"
+    />
+  </div>
+  <div class="mainBlock__files">
+    <div class="files__fields">
+      <div></div>
+      <div (click)="sortFiles('name')" class="field">
+        Название <span class="down"></span>
+      </div>
+      <div (click)="sortFiles('author')" class="field">
+        Автор <span class="down"></span>
+      </div>
+      <div (click)="sortFiles('size')" class="field">
+        Размер <span class="down"></span>
+      </div>
+      <div (click)="sortFiles('category')" class="field">
+        Тип <span class="down"></span>
+      </div>
+      <div (click)="sortFiles('date')" class="field">
+        Дата создания <span class="down"></span>
+      </div>
+    </div>
+    <div class="files__all">
+      <app-file *ngFor="let file of files" [file]="file"></app-file>
+    </div>
+  </div>
+</div>

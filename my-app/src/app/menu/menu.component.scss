@@ -1,0 +1,71 @@
+.mainMenu {
+    position: absolute;
+    background: #ffffff;
+    z-index: 1;
+    height: calc(100% - 136px);
+    width: 307px;
+    box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 0 0 15px 0;
+    padding: 32px;
+    box-sizing: border-box;
+    &__drive {
+        text-align: left;
+        font-weight: bold;
+        font-size: 26px;
+        color: #3e3e3e;
+    }
+    &__addFileButton {
+        margin-top: 22px;
+        margin-bottom: 29px;
+        width: 245px;
+        height: 44px;
+        background: #333131;
+        text-align: center;
+        cursor: pointer;
+        color: #ffffff;
+        border-radius: 35px;
+        .text {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 44px;
+        }
+        .largePlus {
+            width: 11px;
+            height: 11px;
+            position: relative;
+            top: 1px;
+            user-select: none;
+            pointer-events: none;
+        }
+        &:hover,
+        :active {
+            background: #5c5858;
+        }
+    }
+    &__menu {
+        width: 245px;
+        font-size: 16px;
+        color: #000000;
+        text-align: left;
+        .menu-point {
+            height: 34px;
+            padding: 0 17px;
+            box-sizing: border-box;
+            line-height: 34px;
+            cursor: pointer;
+            margin-bottom: 2px;
+            &:hover,
+            :active {
+                background: #d9d9d9;
+                font-weight: bold;
+                border-radius: 20px;
+            }
+        }
+        .active {
+            background: #d9d9d9;
+            font-weight: bold;
+            border-radius: 20px;
+        }
+    }
+}
+
