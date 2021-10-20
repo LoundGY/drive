@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllComponent implements OnInit {
   public search: string = '';
-  public files: any[] = [
+  public files: any[]= [
     {
       name: '1.jpg',
       author: 'Pushkin Alex',
@@ -59,7 +59,7 @@ export class AllComponent implements OnInit {
     },
   ];
 
-  private allFiles: any[] = [];
+  private allFiles: any[]  = [];
 
   constructor() {}
 
