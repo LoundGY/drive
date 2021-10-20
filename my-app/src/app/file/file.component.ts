@@ -6,12 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./file.component.scss'],
 })
 export class FileComponent implements OnInit {
-  @Input() file;
+  @Input() file: any;
 
-  checked: boolean = false;
+  public checked: boolean = false;
 
   ngOnInit(): void {}
-  ngOnChanges() {
-    this.checked = false;
-  }
+
+  ngOnChanges(): void {}
 }

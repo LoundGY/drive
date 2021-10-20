@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
-import { FilesComponent } from './files/files.component';
-import { FileComponent } from './file/file.component';
-
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent, MenuComponent, FilesComponent, FileComponent],
+  declarations: [
+    AppComponent,
+    FooterComponent,
+    HeaderComponent,
+    MenuComponent
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

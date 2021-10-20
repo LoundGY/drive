@@ -1,15 +1,18 @@
 .fields {
-    display: grid;
+    display: flex;
     height: 40px;
     line-height: 40px;
     text-align: center;
-    grid-template-columns: 50px repeat(5, calc(20% - 10px));
     box-sizing: border-box;
     border-bottom: 1px double #e6e6e6;
     &:hover {
         background: #eaeaea;
     }
+    &__first {
+        flex-basis: 50px;
+    }
     &__field {
+        flex-basis: calc(20% - 10px);
     }
     &.checked {
         background: #eaeaea;

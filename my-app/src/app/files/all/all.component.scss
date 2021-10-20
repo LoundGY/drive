@@ -27,7 +27,7 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            background: url("../../assets/img/search.svg");
+            background: url("../../../assets/img/search.svg");
             width: 11.5px;
             height: 11.5px;
         }
@@ -42,17 +42,20 @@
         border-radius: 15px;
         box-sizing: border-box;
         .files__fields {
-            display: grid;
+            display: flex;
             height: 49px;
             line-height: 49px;
             background: #fdc303;
             border-radius: 15px 15px 0 0;
             text-align: center;
-            grid-template-columns: 50px repeat(5, calc(20% - 10px));
+        }
+        .field-first {
+            flex-basis: 50px;
         }
         .field {
             position: relative;
             cursor: pointer;
+            flex-basis: calc(20% - 10px);
             &:not(:last-child)::after {
                 content: "";
                 position: absolute;

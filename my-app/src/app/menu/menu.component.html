@@ -7,6 +7,7 @@
   <ul class="mainMenu__menu">
     <li
       *ngFor="let item of menuItems; let i = index"
+      routerLink="/{{ menuRoutes[i] }}"
       class="menu-point"
       [class.active]="index === i"
       (click)="changeIndex(i)"
@@ -15,4 +16,4 @@
     </li>
   </ul>
 </div>
-<app-files [files]="files"></app-files>
+<router-outlet></router-outlet>
