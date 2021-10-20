@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapsComponent implements OnInit {
   public search: string = '';
-  public files = [
+  public files: any[] = [
     {
       name: '1.kml',
       author: 'Pushkin Alex',
@@ -24,7 +24,7 @@ export class MapsComponent implements OnInit {
     },
   ];
 
-  private allFiles: Array<any> = [];
+  private allFiles: any[] = [];
 
   constructor() {}
 

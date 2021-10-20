@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviesComponent implements OnInit {
   public search: string = '';
-  public files: Array<any> = [
+  public files: any[] = [
     {
       name: '1.mp3',
       author: 'Pushkin Alex',
@@ -24,7 +24,7 @@ export class MoviesComponent implements OnInit {
     },
   ];
 
-  private allFiles: Array<any> = [];
+  private allFiles: any[] = [];
 
   constructor() {}
 
@@ -35,7 +35,7 @@ export class MoviesComponent implements OnInit {
     this.allFiles = this.files;
     this.updateSearch();
   }
-  
+
   public sortFiles(field: string): void {
     this.files.sort((a, b) => {
       if (a[field] < b[field]) {
