@@ -6,6 +6,12 @@
     padding-top: 35px;
     padding-left: 52px;
     box-sizing: border-box;
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 44px;
+    }
     &__search {
         position: relative;
         width: 543px;
@@ -30,6 +36,35 @@
             background: url("../../../assets/img/search.svg");
             width: 11.5px;
             height: 11.5px;
+        }
+    }
+    &__buttons {
+        width: 510px;
+        display: flex;
+        justify-content: space-between;
+        .button {
+            width: 245px;
+            height: 44px;
+            line-height: 44px;
+            cursor: pointer;
+            color: #ffffff;
+            border-radius: 50px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .delete {
+            background: #d02020;
+            &:hover,
+            :active {
+                background: #911f1f;
+            }
+        }
+        .download {
+            background: #333131;
+            &:hover,
+            :active {
+                background: #242222;
+            }
         }
     }
     &__files {

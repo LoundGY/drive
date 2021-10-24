@@ -1,14 +1,22 @@
 <div class="mainBlock">
-  <div class="mainBlock__search">
-    <div class="search-icon"></div>
-    <input
-      [(ngModel)]="search"
-      (ngModelChange)="updateSearch()"
-      class="search"
-      placeholder="Искать"
-      type="text"
-      name="search"
-    />
+  <div class="mainBlock__top">
+    <div class="mainBlock__search">
+      <div class="search-icon"></div>
+      <input
+        [(ngModel)]="search"
+        (ngModelChange)="updateSearch()"
+        class="search"
+        placeholder="Искать"
+        type="text"
+        name="search"
+      />
+    </div>
+    <div class="mainBlock__buttons">
+      <div *ngIf="selectedFiles.length > 0" class="button delete" (click)="deleteItems()">Удалить</div>
+      <div *ngIf="selectedFiles.length > 0" class="button download">
+        Скачать
+      </div>
+    </div>
   </div>
   <div class="mainBlock__files">
     <div class="files__fields">
@@ -30,7 +38,11 @@
       </div>
     </div>
     <div class="files__all">
-      <app-file *ngFor="let file of files" [file]="file"></app-file>
+      <app-file
+        *ngFor="let file of files"
+        [file]="file"
+        (chooseItem)="chooseItem($event)"
+      ></app-file>
     </div>
   </div>
 </div>

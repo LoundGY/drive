@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OtherComponent implements OnInit {
   public search: string = '';
+  public selectedFiles: string[] = [];
   public files: any[] = [
     {
+      id: 1,
       name: '1.txt',
       author: 'Pushkin Alex',
       size: '54.5 MB',
@@ -18,8 +20,6 @@ export class OtherComponent implements OnInit {
   ];
 
   private allFiles: any[] = [];
-
-  constructor() {}
 
   ngOnInit(): void {
     this.allFiles = this.files;
@@ -40,7 +40,26 @@ export class OtherComponent implements OnInit {
       return 0;
     });
   }
+
   public updateSearch(): void {
     this.files = this.allFiles.filter((el) => el.name.includes(this.search));
+  }
+
+  public chooseItem(index: string): void {
+    const indexOfItem = this.selectedFiles.indexOf(index);
+    if (indexOfItem > -1) {
+      this.selectedFiles.splice(indexOfItem, 1);
+    } else {
+      this.selectedFiles.push(index);
+    }
+  }
+
+  public deleteItems(): void {
+    this.selectedFiles.forEach((element) => {
+      this.files.splice(
+        this.files.findIndex((el) => el.id === element),
+        1
+      );
+    });
   }
 }

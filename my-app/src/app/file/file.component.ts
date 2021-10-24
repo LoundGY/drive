@@ -1,16 +1,18 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-file',
   templateUrl: './file.component.html',
   styleUrls: ['./file.component.scss'],
 })
-export class FileComponent implements OnInit {
+export class FileComponent {
   @Input() file: any;
+  @Output() chooseItem = new EventEmitter();
 
   public checked: boolean = false;
 
-  ngOnInit(): void {}
-
-  ngOnChanges(): void {}
+  public chooseItemDone(id: string): void {
+    this.checked = !this.checked;
+    this.chooseItem.emit(id);
+  }
 }
