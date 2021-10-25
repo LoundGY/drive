@@ -12,9 +12,6 @@ import {
 export class TooltipDirective {
   @Input('tooltip') tooltipTitle: string;
   @Input() offset: number = 0;
-  private tooltip: HTMLElement;
-
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('mouseenter') onMouseEnter() {
     if (!this.tooltip) {
@@ -27,6 +24,10 @@ export class TooltipDirective {
       this.hide();
     }
   }
+
+  private tooltip: HTMLElement;
+
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   private show(): void {
     this.create();
