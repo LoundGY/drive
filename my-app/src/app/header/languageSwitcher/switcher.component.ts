@@ -35,7 +35,7 @@ export class SwitcherComponent {
     });
   }
 
-  toggleMenu() {
+  public toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
   public switch(lang: string): void {

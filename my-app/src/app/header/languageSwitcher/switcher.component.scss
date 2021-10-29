@@ -1,6 +1,9 @@
 .language-switcher {
     cursor: pointer;
-    line-height: 35px;
+    img {
+        width: 30px;
+        height: 30px;
+    }
 }
 .switch {
     position: relative;

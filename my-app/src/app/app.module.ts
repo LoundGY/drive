@@ -41,6 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
   ],
+
   providers: [],
   bootstrap: [AppComponent],
 })

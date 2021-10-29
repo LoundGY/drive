@@ -1,9 +1,18 @@
 <div class="switch">
-  <div>
-    <i #toggleButton (click)="toggleMenu()" class="language-switcher">🌐</i>
+  <div class="language-switcher">
+    <img
+      #toggleButton
+      (click)="toggleMenu()"
+      src="../../../assets/img/lang.svg"
+      alt=""
+    />
   </div>
   <div class="menu" *ngIf="isMenuOpen" #menu>
-    <div class="menu__item" *ngFor="let item of languages" (click)="switch(item)">
+    <div
+      class="menu__item"
+      *ngFor="let item of languages"
+      (click)="switch(item)"
+    >
       {{ "LANGUAGES." + item | translate }}
     </div>
   </div>
