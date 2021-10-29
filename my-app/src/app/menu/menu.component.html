@@ -1,18 +1,19 @@
 <div class="mainMenu">
   <h1 class="mainMenu__drive">Drive</h1>
-  <div class="mainMenu__addFileButton">
-    <span class="text">Добавить</span>{{ " " }}
+  <div routerLink="/upload" class="mainMenu__addFileButton">
+    <span class="text">{{ "ADD" | translate }}</span
+    >{{ " " }}
     <img class="largePlus" src="{{ plus }}" />
   </div>
   <ul class="mainMenu__menu">
     <li
-      *ngFor="let item of menuItems; let i = index"
-      routerLink="/{{ menuRoutes[i] }}"
+      *ngFor="let item of menuRoutes; let i = index"
+      routerLink="/{{ item }}"
       class="menu-point"
       [class.active]="index === i"
       (click)="changeIndex(i)"
     >
-      {{ item }}
+      {{ "MENU." + item | translate }}
     </li>
   </ul>
 </div>

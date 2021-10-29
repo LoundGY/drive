@@ -1,0 +1,22 @@
+{
+    "ADD":"Add",
+    "LANGUAGES":{
+        "ru":"Russian",
+        "en":"English",
+        "pl":"Polish"
+    },
+    "MENU":{
+        "all":"All", 
+        "maps":"Maps", 
+        "images":"Images", 
+        "movies":"Movies", 
+        "other":"Other"
+    },
+    "TABLE":{
+        "name": "Name",
+        "author": "Author",
+        "size": "Size",
+        "category": "Category",
+        "date": "Date"
+    }
+}

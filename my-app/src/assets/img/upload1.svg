@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="386.002" height="218.983" viewBox="0 0 386.002 218.983">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.709" y1="0.878" x2="-1.328" y2="2.079" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#dddada"/>
+    </linearGradient>
+    <filter id="Объединение_2" x="32.501" y="1.491" width="323.001" height="216" filterUnits="userSpaceOnUse">
+      <feOffset dx="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-opacity="0.098"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Контур_10" x="107.826" y="47.5" width="60.677" height="67.486" filterUnits="userSpaceOnUse">
+      <feOffset dx="-3" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3.5" result="blur-2"/>
+      <feFlood flood-opacity="0.173"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Объединение_3" x="0" y="112" width="84.001" height="84" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path id="Объединение_1" data-name="Объединение 1" d="M-3253,171h-134a39,39,0,0,1-39-39v-5a39,39,0,0,1,34.809-38.777,37.924,37.924,0,0,1-.432-5.723A37.434,37.434,0,0,1-3354.258,45a41,41,0,0,1,11.694,1.687,25.354,25.354,0,0,1,6.216,3.237A68.6,68.6,0,0,1-3270.5,0c35.712,0,65.041,27.525,68.215,62.665.886-.279,2.026-.747,3.644-1.176,2.512-.667,3.066-.662,6.329-.58C-3165.8,64.547-3148,87.423-3148,115.5a55.4,55.4,0,0,1-55.3,55.5Z" transform="translate(3534.001)" fill="url(#linear-gradient)"/>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Объединение_2)">
+    <path id="Объединение_2-2" data-name="Объединение 2" d="M-3253,171h-134a39,39,0,0,1-39-39v-5a39,39,0,0,1,34.809-38.777,37.924,37.924,0,0,1-.432-5.723A37.434,37.434,0,0,1-3354.258,45a41,41,0,0,1,11.694,1.687,25.354,25.354,0,0,1,6.216,3.237A68.6,68.6,0,0,1-3270.5,0c35.712,0,65.041,27.525,68.215,62.665.886-.279,2.026-.747,3.644-1.176,2.512-.667,3.066-.662,6.329-.58C-3165.8,64.547-3148,87.423-3148,115.5a55.4,55.4,0,0,1-55.3,55.5Z" transform="translate(3476 23.99)" fill="url(#linear-gradient)"/>
+  </g>
+  <g id="Сгруппировать_3" data-name="Сгруппировать 3" transform="translate(-889.679 -378.017)">
+    <path id="Контур_11" data-name="Контур 11" d="M15.375-.01,86.61-.038c6.445,7.191,26.112,25.863,31.994,32.7v110.1a15.375,15.375,0,0,1-15.375,15.375H15.375A15.375,15.375,0,0,1,0,142.754V15.364A15.375,15.375,0,0,1,15.375-.01Z" transform="translate(932 438.872)" fill="#ffde72"/>
+    <g transform="matrix(1, 0, 0, 1, 889.68, 378.02)" filter="url(#Контур_10)">
+      <path id="Контур_10-2" data-name="Контур 10" d="M7.175,2.594C7.4,1.709,7.87,0,7.87,0s24.4,38.821,22.371,39.99L3.666,33.058a3.661,3.661,0,0,1-3.193-5.45Z" transform="matrix(0.97, -0.26, 0.26, 0.97, 121.33, 62.86)" fill="#fff"/>
+    </g>
+    <rect id="Прямоугольник_31" data-name="Прямоугольник 31" width="53" height="9" rx="4.5" transform="translate(951 478)" fill="#fff"/>
+    <rect id="Прямоугольник_32" data-name="Прямоугольник 32" width="53" height="9" rx="4.5" transform="translate(951 494)" fill="#fff"/>
+    <rect id="Прямоугольник_33" data-name="Прямоугольник 33" width="81" height="9" rx="4.5" transform="translate(951 518)" fill="#fff"/>
+    <rect id="Прямоугольник_34" data-name="Прямоугольник 34" width="81" height="9" rx="4.5" transform="translate(951 533)" fill="#fff"/>
+    <rect id="Прямоугольник_35" data-name="Прямоугольник 35" width="81" height="8" rx="4" transform="translate(951 549)" fill="#fff"/>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Объединение_3)">
+    <path id="Объединение_3-2" data-name="Объединение 3" d="M-3400.5,58.5v-18h-18A7.5,7.5,0,0,1-3426,33a7.5,7.5,0,0,1,7.5-7.5h18V7.5A7.5,7.5,0,0,1-3393,0a7.5,7.5,0,0,1,7.5,7.5v18h18A7.5,7.5,0,0,1-3360,33a7.5,7.5,0,0,1-7.5,7.5h-18v18A7.5,7.5,0,0,1-3393,66,7.5,7.5,0,0,1-3400.5,58.5Z" transform="translate(3435 118)" fill="#566a77"/>
+  </g>
+</svg>

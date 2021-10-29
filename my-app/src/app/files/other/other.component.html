@@ -28,19 +28,19 @@
     <div class="files__fields">
       <div class="field-first"></div>
       <div (click)="sortFiles('name')" class="field">
-        Название <span class="down"></span>
+        {{ "TABLE.name" | translate }}<span class="down"></span>
       </div>
       <div (click)="sortFiles('author')" class="field">
-        Автор <span class="down"></span>
+        {{ "TABLE.author" | translate }}<span class="down"></span>
       </div>
       <div (click)="sortFiles('size')" class="field">
-        Размер <span class="down"></span>
+        {{ "TABLE.size" | translate }} <span class="down"></span>
       </div>
       <div (click)="sortFiles('category')" class="field">
-        Тип <span class="down"></span>
+        {{ "TABLE.category" | translate }} <span class="down"></span>
       </div>
       <div (click)="sortFiles('date')" class="field">
-        Дата создания <span class="down"></span>
+        {{ "TABLE.date" | translate }}<span class="down"></span>
       </div>
     </div>
     <div class="files__all">

@@ -1,0 +1,10 @@
+<div class="switch">
+  <div>
+    <i #toggleButton (click)="toggleMenu()" class="language-switcher">🌐</i>
+  </div>
+  <div class="menu" *ngIf="isMenuOpen" #menu>
+    <div class="menu__item" *ngFor="let item of languages" (click)="switch(item)">
+      {{ "LANGUAGES." + item | translate }}
+    </div>
+  </div>
+</div>

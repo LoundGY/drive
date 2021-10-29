@@ -1,0 +1,22 @@
+{
+    "ADD":"Dodaj",
+    "LANGUAGES":{
+        "ru":"Russian",
+        "en":"English",
+        "pl":"Polish"
+    },
+    "MENU":{
+        "all":"Wszystko", 
+        "maps":"Mapy", 
+        "images":"Zdjęcia", 
+        "movies":"Filmy", 
+        "other":"Inne"
+    },
+    "TABLE":{
+        "name": "Nazwa",
+        "author": "Nazwa użytkownika",
+        "size": "Rozmiar",
+        "category": "Rodzaj",
+        "date": "Data dodania"
+    }
+}
