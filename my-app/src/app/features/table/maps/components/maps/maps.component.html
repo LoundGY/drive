@@ -46,6 +46,8 @@
     <div class="files__all">
       <app-file
         *ngFor="let file of files"
+        [tooltip]="file.name"
+        [offset]="5"
         [file]="file"
         (chooseItem)="chooseItem($event)"
       ></app-file>

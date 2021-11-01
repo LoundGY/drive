@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FileModule } from '../../../widgets/file/file.module';
+import { TooltipModule } from '../../../directives/tooltip/tooltip.module';
 import { ImagesComponent } from './components/images/images.component';
 import { ImagesRoutingModule } from './images-routing.module';
 
@@ -17,9 +18,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     CommonModule,
     FormsModule,
+    TranslateModule,
     ImagesRoutingModule,
     FileModule,
-    TranslateModule,
+    TooltipModule,
   ],
 })
 export class ImagesModule {}
