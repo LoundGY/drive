@@ -1,5 +1,8 @@
 {
     "ADD":"Add",
+    "UPLOAD":"Upload",
+    "DOWNLOAD":"Download",
+    "DELETE":"Delete",
     "LANGUAGES":{
         "ru":"Russian",
         "en":"English",

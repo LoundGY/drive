@@ -1,7 +1,7 @@
 <div class="upload">
   <div class="buttons">
     <button *ngIf="files.length > 0" [disabled]="true" class="button download">
-      Загрузить
+      {{ "UPLOAD" | translate }}
     </button>
   </div>
   <div class="container" appDnd (fileDropped)="onFileDropped($event)">

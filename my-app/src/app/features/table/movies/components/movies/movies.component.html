@@ -17,10 +17,10 @@
         class="button delete"
         (click)="deleteItems()"
       >
-        Удалить
+        {{ "DELETE" | translate }}
       </div>
       <div *ngIf="selectedFiles.length > 0" class="button download">
-        Скачать
+        {{ "DOWNLOAD" | translate }}
       </div>
     </div>
   </div>
