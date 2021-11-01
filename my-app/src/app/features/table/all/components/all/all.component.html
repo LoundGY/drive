@@ -1,6 +1,6 @@
-<div class="mainBlock">
-  <div class="mainBlock__top">
-    <div class="mainBlock__search">
+<div class="main-block">
+  <div class="main-block__top">
+    <div class="main-block__search">
       <div class="search-icon"></div>
       <input
         [(ngModel)]="search"
@@ -11,7 +11,7 @@
         name="search"
       />
     </div>
-    <div class="mainBlock__buttons">
+    <div class="main-block__buttons">
       <div
         *ngIf="selectedFiles.length > 0"
         class="button delete"
@@ -24,7 +24,7 @@
       </div>
     </div>
   </div>
-  <div class="mainBlock__files">
+  <div class="main-block__files">
     <div class="files__fields">
       <div class="field-first"></div>
       <div (click)="sortFiles('name')" class="field">
