@@ -1,8 +1,8 @@
 {
     "ADD":"Dodaj",
-    "UPLOAD":"Upload",
-    "DOWNLOAD":"Download",
-    "DELETE":"Delete",
+    "UPLOAD":"Przekazać plik",
+    "DOWNLOAD":"Pobieranie",
+    "DELETE":"Kasować",
     "LANGUAGES":{
         "ru":"Russian",
         "en":"English",

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TableRow } from 'src/app/common/interfaces/table.interface';
-import { mapFiles } from '../../constants/maps.constants';
+import { MapFiles } from 'src/app/common/services/files/map-files.service';
 
 @Component({
   selector: 'app-maps',
@@ -10,11 +10,14 @@ import { mapFiles } from '../../constants/maps.constants';
 export class MapsComponent implements OnInit {
   public search: string = '';
   public selectedFiles: number[] = [];
-  public files: TableRow[] = mapFiles;
+  public files: TableRow[];
 
   private allFiles: TableRow[] = [];
 
+  constructor(private myFiles: MapFiles) {}
+
   ngOnInit(): void {
+    this.files = this.myFiles.getData();
     this.allFiles = this.files;
   }
   ngOnChanges(): void {

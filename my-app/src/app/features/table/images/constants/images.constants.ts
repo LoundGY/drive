@@ -3,18 +3,18 @@ import { TableRow } from 'src/app/common/interfaces/table.interface';
 export const imageFiles: TableRow[] = [
   {
     id: 1,
-    name: '1.kml',
+    name: '1.img',
     author: 'Pushkin Alex',
     size: '54.5 MB',
-    category: 'Карты',
+    category: 'Фото',
     date: new Date(),
   },
   {
     id: 2,
-    name: '2.mp0',
+    name: '2.png',
     author: 'Pushkin Alex',
     size: '5.5 MB',
-    category: 'Карты',
+    category: 'Фото',
     date: new Date(),
   },
 ];

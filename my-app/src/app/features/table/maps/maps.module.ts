@@ -1,17 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FileModule } from '../../../widgets/file/file.module';
 import { TooltipModule } from '../../../directives/tooltip/tooltip.module';
 import { MapsComponent } from './components/maps/maps.component';
 import { MapsRoutingModule } from './maps-routing.module';
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}
+import { MapFiles } from '../../../common/services/files/map-files.service';
 
 @NgModule({
   declarations: [MapsComponent],
@@ -21,7 +16,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MapsRoutingModule,
     FileModule,
     TranslateModule,
-    TooltipModule
+    TooltipModule,
   ],
+  providers: [MapFiles],
 })
 export class MapsModule {}

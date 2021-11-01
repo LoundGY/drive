@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TableRow } from 'src/app/common/interfaces/table.interface';
-import { movieFiles } from '../../constants/movie.constants';
+import { MoviesFiles } from 'src/app/common/services/files/movies-files.service';
 
 @Component({
   selector: 'app-movies',
@@ -10,11 +10,14 @@ import { movieFiles } from '../../constants/movie.constants';
 export class MoviesComponent implements OnInit {
   public search: string = '';
   public selectedFiles: number[] = [];
-  public files: TableRow[] = movieFiles;
+  public files: TableRow[];
 
   private allFiles: TableRow[] = [];
 
+  constructor(private myFiles: MoviesFiles) {}
+
   ngOnInit(): void {
+    this.files = this.myFiles.getData();
     this.allFiles = this.files;
   }
   ngOnChanges(): void {

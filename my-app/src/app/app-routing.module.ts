@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, ActivatedRoute, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: '/all', pathMatch: 'full' },
   {
     path: 'movies',
     loadChildren: () =>
-      import('./features/table/movies/movies.module').then((m) => m.MoviesModule),
+      import('./features/table/movies/movies.module').then(
+        (m) => m.MoviesModule
+      ),
   },
 
   {
@@ -17,7 +19,9 @@ const routes: Routes = [
   {
     path: 'images',
     loadChildren: () =>
-      import('./features/table/images/images.module').then((m) => m.ImagesModule),
+      import('./features/table/images/images.module').then(
+        (m) => m.ImagesModule
+      ),
   },
   {
     path: 'maps',
