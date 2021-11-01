@@ -1,0 +1,36 @@
+<div class="upload">
+  <div class="buttons">
+    <button *ngIf="files.length > 0" [disabled]="true" class="button download">
+      Загрузить
+    </button>
+  </div>
+  <div class="container" appDnd (fileDropped)="onFileDropped($event)">
+    <input
+      type="file"
+      #fileDropRef
+      id="fileDropRef"
+      multiple
+      (change)="fileBrowseHandler($event)"
+    />
+
+    <div class="single-file" *ngFor="let file of files; let i = index">
+      <img class="icon" src="../../../assets/img/doc.svg" alt="file" />
+      <div class="info">
+        <h4 class="name" title="{{ file?.name }}">
+          {{ file?.name | fileTitle }}
+        </h4>
+        <p class="size">
+          {{ formatBytes(file?.size) }}
+        </p>
+        <app-progress [progress]="file?.progress"></app-progress>
+      </div>
+      <img
+        src="../../../assets/img/cancel.svg"
+        class="delete"
+        width="20px"
+        alt="file"
+        (click)="deleteFile(i)"
+      />
+    </div>
+  </div>
+</div>

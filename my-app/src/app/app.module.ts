@@ -1,20 +1,17 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 import {
-  TranslateModule,
-  TranslateLoader,
-  TranslateService,
+  TranslateLoader, TranslateModule, TranslateService
 } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { SwitcherComponent } from './header/languageSwitcher/switcher.component';
-import { MenuComponent } from './menu/menu.component';
+import { FooterComponent } from './features/footer/footer.component';
+import { HeaderModule } from './features/header/header.module';
+import { MenuModule } from './features/menu/menu.module';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -24,15 +21,14 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     FooterComponent,
-    HeaderComponent,
-    SwitcherComponent,
-    MenuComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    HeaderModule,
+    MenuModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
