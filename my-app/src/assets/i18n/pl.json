@@ -1,12 +1,16 @@
 {
+    "ADDING":"Dodatek",
     "ADD":"Dodaj",
+    "CANCEL":"Anulować",
     "UPLOAD":"Przekazać plik",
     "DOWNLOAD":"Pobieranie",
     "DELETE":"Kasować",
+    "EMPTY-FIELD":"Wypełnij pole",
+    "LANGUAGE":"Język",
     "LANGUAGES":{
-        "ru":"Russian",
-        "en":"English",
-        "pl":"Polish"
+        "ru":"Rosyjski",
+        "en":"Angielski",
+        "pl":"Polskie"
     },
     "MENU":{
         "all":"Wszystko", 

@@ -1,8 +1,12 @@
 {
+    "ADDING":"Adding",
     "ADD":"Add",
+    "CANCEL":"Cancel",
     "UPLOAD":"Upload",
     "DOWNLOAD":"Download",
     "DELETE":"Delete",
+    "EMPTY-FIELD":"Fill in the field",
+    "LANGUAGE":"Language",
     "LANGUAGES":{
         "ru":"Russian",
         "en":"English",

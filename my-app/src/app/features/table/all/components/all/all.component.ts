@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { TableRow } from 'src/app/common/interfaces/table.interface';
 import { AllFiles } from 'src/app/common/services/files/all-files.service';
+import { AddingComponent } from 'src/app/widgets/adding/components/adding/adding.component';
 
 @Component({
   selector: 'app-all',
@@ -14,7 +16,7 @@ export class AllComponent implements OnInit {
 
   private allFiles: TableRow[] = [];
 
-  constructor(private myFiles: AllFiles) {}
+  constructor(private myFiles: AllFiles, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.files = this.myFiles.getData();
@@ -56,6 +58,17 @@ export class AllComponent implements OnInit {
         this.files.findIndex((el) => el.id === element),
         1
       );
+    });
+  }
+  animal: string;
+  name: string;
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddingComponent, {
+      width: '350px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
     });
   }
 }

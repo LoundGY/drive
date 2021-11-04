@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>{{ "ADDING" | translate }}</h1>
+<div mat-dialog-content>
+  <div class="form-field">
+    <label class="form-field__title">{{ "TABLE.name" | translate }}</label>
+    <app-input [formControl]="name" class="form-field__input"></app-input>
+    <label *ngIf="name.hasError('required')" class="form-field__error">
+      {{ "EMPTY-FIELD" | translate }}
+    </label>
+  </div>
+  <div class="form-field">
+    <label class="form-field__title">{{ "TABLE.author" | translate }}</label>
+    <app-input [formControl]="author" class="form-field__input"></app-input>
+    <label *ngIf="author.hasError('required')" class="form-field__error">
+      {{ "EMPTY-FIELD" | translate }}
+    </label>
+  </div>
+  <div class="form-field">
+    <label class="form-field__title">{{ "TABLE.size" | translate }}</label>
+    <app-input [formControl]="size" class="form-field__input"></app-input>
+    <label *ngIf="size.hasError('required')" class="form-field__error">
+      {{ "EMPTY-FIELD" | translate }}
+    </label>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()" cdkFocusInitial>
+    {{ "CANCEL" | translate }}
+  </button>
+  <button
+    mat-raised-button
+    [mat-dialog-close]="'asd'"
+    [disabled]="
+      size.hasError('required') &&
+      author.hasError('required') &&
+      name.hasError('required')
+    "
+  >
+    {{ "ADD" | translate }}
+  </button>
+</div>

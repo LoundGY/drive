@@ -1,19 +1,14 @@
 <div class="switch">
-  <div class="language-switcher">
-    <img
-      #toggleButton
-      (click)="toggleMenu()"
-      src="../../../../assets/img/lang.svg"
-      alt=""
-    />
-  </div>
-  <div class="menu" *ngIf="isMenuOpen" #menu>
-    <div
-      class="menu__item"
-      *ngFor="let item of languages"
-      (click)="switch(item)"
-    >
-      {{ "LANGUAGES." + item | translate }}
-    </div>
-  </div>
+  <mat-form-field appearance="fill">
+    <mat-label> {{ "LANGUAGE" | translate }}</mat-label>
+    <mat-select [(ngModel)]="currentLang" name="language">
+      <mat-option
+        *ngFor="let item of languages"
+        [value]="item"
+        (click)="switch(item)"
+      >
+        {{ "LANGUAGES." + item | translate }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
