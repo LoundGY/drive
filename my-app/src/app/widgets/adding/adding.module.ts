@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { InputComponent } from './components/input/input.component';
 import { AddingComponent } from './components/adding/adding.component';
+import { GenerateCategory } from 'src/app/common/services/generate-category.service';
 
 @NgModule({
   declarations: [AddingComponent, InputComponent],
@@ -20,5 +21,6 @@ import { AddingComponent } from './components/adding/adding.component';
     MatButtonModule,
   ],
   exports: [AddingComponent],
+  providers: [GenerateCategory],
 })
 export class AddingModule {}

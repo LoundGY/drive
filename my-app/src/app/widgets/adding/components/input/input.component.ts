@@ -1,5 +1,11 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, Output, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  FormControl,
+  FormGroupDirective,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-input',
@@ -14,7 +20,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
 })
 export class InputComponent implements ControlValueAccessor {
+  @Output() isValid = new EventEmitter<any>();
+  public inputFormControl = new FormControl('', [Validators.required]);
   public value: string;
+  public valid: boolean;
   public disabled: boolean = false;
   private onChange = (value: any) => {};
   public onTouched = () => {};
@@ -36,9 +45,14 @@ export class InputComponent implements ControlValueAccessor {
   }
 
   updateValue(insideValue: Event) {
-    console.log(this.value);
+    if (this.inputFormControl.hasError('required')) {
+      this.valid = false;
+    } else {
+      this.valid = true;
+    }
     this.value = (insideValue.target as HTMLInputElement).value;
     this.onChange(insideValue);
+    this.isValid.emit([this.valid, this.value]);
     this.onTouched();
   }
 }

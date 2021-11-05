@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatButtonModule } from '@angular/material/button';
 import { TooltipModule } from '../../../directives/tooltip/tooltip.module';
 import { FileModule } from '../../../widgets/file/file.module';
 import { AddingModule } from 'src/app/widgets/adding/adding.module';
@@ -19,6 +20,7 @@ import { AllFiles } from '../../../common/services/files/all-files.service';
     TranslateModule,
     TooltipModule,
     AddingModule,
+    MatButtonModule,
   ],
   providers: [AllFiles],
 })

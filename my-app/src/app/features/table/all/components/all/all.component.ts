@@ -13,6 +13,7 @@ export class AllComponent implements OnInit {
   public search: string = '';
   public selectedFiles: number[] = [];
   public files: TableRow[];
+  private lastIndex: number;
 
   private allFiles: TableRow[] = [];
 
@@ -20,6 +21,9 @@ export class AllComponent implements OnInit {
 
   ngOnInit(): void {
     this.files = this.myFiles.getData();
+    this.lastIndex = this.files.reduce((acc, curr) =>
+      acc.id > curr.id ? acc : curr
+    ).id;
     this.allFiles = this.files;
   }
   ngOnChanges(): void {
@@ -60,15 +64,15 @@ export class AllComponent implements OnInit {
       );
     });
   }
-  animal: string;
-  name: string;
-  openDialog(): void {
+
+  public openDialog(): void {
     const dialogRef = this.dialog.open(AddingComponent, {
       width: '350px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
+      result.id = this.lastIndex + 1;
+      this.allFiles.push(result);
     });
   }
 }
