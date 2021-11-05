@@ -6,7 +6,7 @@ export const allFiles: TableRow[] = [
     name: '1.jpg',
     author: 'Pushkin Alex',
     size: '54.5 MB',
-    category: 'Фото',
+    category: 'image',
     date: new Date(),
   },
   {
@@ -14,7 +14,7 @@ export const allFiles: TableRow[] = [
     name: '2.png',
     author: 'Pushkin Alex',
     size: '5.5 MB',
-    category: 'Фото',
+    category: 'image',
     date: new Date(),
   },
   {
@@ -22,7 +22,7 @@ export const allFiles: TableRow[] = [
     name: '1.kml',
     author: 'Pushkin Alex',
     size: '54.5 MB',
-    category: 'Карты',
+    category: 'map',
     date: new Date(),
   },
   {
@@ -30,7 +30,7 @@ export const allFiles: TableRow[] = [
     name: '2.mp0',
     author: 'Pushkin Alex',
     size: '5.5 MB',
-    category: 'Карты',
+    category: 'map',
     date: new Date(),
   },
   {
@@ -38,7 +38,7 @@ export const allFiles: TableRow[] = [
     name: '1.mp3',
     author: 'Pushkin Alex',
     size: '54.5 MB',
-    category: 'Видео',
+    category: 'movie',
     date: new Date(),
   },
   {
@@ -46,7 +46,7 @@ export const allFiles: TableRow[] = [
     name: '2.mp3',
     author: 'Pushkin Alex',
     size: '5.5 MB',
-    category: 'Видео',
+    category: 'movie',
     date: new Date(),
   },
   {
@@ -54,7 +54,7 @@ export const allFiles: TableRow[] = [
     name: '1.txt',
     author: 'Pushkin Alex',
     size: '54.5 MB',
-    category: 'Текст',
+    category: 'other',
     date: new Date(),
   },
 ];

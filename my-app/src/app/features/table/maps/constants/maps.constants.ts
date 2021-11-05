@@ -6,7 +6,7 @@ export const mapFiles: TableRow[] = [
     name: '1.kml',
     author: 'Pushkin Alex',
     size: '54.5 MB',
-    category: 'Карты',
+    category: 'map',
     date: new Date(),
   },
   {
@@ -14,7 +14,7 @@ export const mapFiles: TableRow[] = [
     name: '2.mp0',
     author: 'Pushkin Alex',
     size: '5.5 MB',
-    category: 'Карты',
+    category: 'map',
     date: new Date(),
   },
 ];

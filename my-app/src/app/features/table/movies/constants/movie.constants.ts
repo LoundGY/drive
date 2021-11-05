@@ -6,7 +6,7 @@ export const movieFiles: TableRow[] = [
     name: '1.mp3',
     author: 'Pushkin Alex',
     size: '54.5 MB',
-    category: 'Видео',
+    category: 'movie',
     date: new Date(),
   },
   {
@@ -14,7 +14,7 @@ export const movieFiles: TableRow[] = [
     name: '2.mp3',
     author: 'Pushkin Alex',
     size: '5.5 MB',
-    category: 'Видео',
+    category: 'movie',
     date: new Date(),
   },
 ];

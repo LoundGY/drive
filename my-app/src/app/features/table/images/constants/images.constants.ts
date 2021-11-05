@@ -6,7 +6,7 @@ export const imageFiles: TableRow[] = [
     name: '1.img',
     author: 'Pushkin Alex',
     size: '54.5 MB',
-    category: 'Фото',
+    category: 'image',
     date: new Date(),
   },
   {
@@ -14,7 +14,7 @@ export const imageFiles: TableRow[] = [
     name: '2.png',
     author: 'Pushkin Alex',
     size: '5.5 MB',
-    category: 'Фото',
+    category: 'image',
     date: new Date(),
   },
 ];

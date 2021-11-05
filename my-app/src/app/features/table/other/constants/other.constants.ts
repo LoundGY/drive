@@ -6,7 +6,7 @@ export const otherFiles: TableRow[] = [
     name: '1.txt',
     author: 'Pushkin Alex',
     size: '54.5 MB',
-    category: 'Текст',
+    category: 'other',
     date: new Date(),
   },
 ];

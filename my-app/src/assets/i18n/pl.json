@@ -25,5 +25,9 @@
         "size": "Rozmiar",
         "category": "Rodzaj",
         "date": "Data dodania"
-    }
+    },
+    "image":"Obraz",
+    "movie":"Wideo",
+    "map":"Mapa",
+    "other":"Inne"
 }

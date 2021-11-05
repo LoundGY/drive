@@ -25,5 +25,9 @@
         "size": "Size",
         "category": "Category",
         "date": "Date"
-    }
+    },
+    "image":"Image",
+    "movie":"Movie",
+    "map":"Map",
+    "other":"Other"
 }
