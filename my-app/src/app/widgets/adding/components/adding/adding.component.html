@@ -3,31 +3,34 @@
   <div class="form-field">
     <label class="form-field__title">{{ "TABLE.name" | translate }}</label>
     <app-input
+      [type]="'name'"
       class="form-field__input"
       (isValid)="isValid($event, 'name')"
     ></app-input>
     <label *ngIf="!nameisvalid" class="form-field__error">
-      {{ "EMPTY-FIELD" | translate }}
+      {{ errorname }}
     </label>
   </div>
   <div class="form-field">
     <label class="form-field__title">{{ "TABLE.author" | translate }}</label>
     <app-input
+      [type]="'author'"
       class="form-field__input"
       (isValid)="isValid($event, 'author')"
     ></app-input>
     <label *ngIf="!authorisvalid" class="form-field__error">
-      {{ "EMPTY-FIELD" | translate }}
+      {{ errorauthor }}
     </label>
   </div>
   <div class="form-field">
     <label class="form-field__title">{{ "TABLE.size" | translate }}</label>
     <app-input
+      [type]="'size'"
       class="form-field__input"
       (isValid)="isValid($event, 'size')"
     ></app-input>
     <label *ngIf="!sizeisvalid" class="form-field__error">
-      {{ "EMPTY-FIELD" | translate }}
+      {{ errorsize }}
     </label>
   </div>
 </div>

@@ -23,10 +23,15 @@ export class AddingComponent implements OnInit {
     category: '',
     date: new Date(),
   };
+
   public formisvalid: boolean = false;
   public nameisvalid: boolean;
   public authorisvalid: boolean;
   public sizeisvalid: boolean;
+  public errorauthor: string;
+  public errorsize: string;
+  public errorname: string;
+
   constructor(
     public dialogRef: MatDialogRef<AddingComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
@@ -43,19 +48,22 @@ export class AddingComponent implements OnInit {
         {
           this.file.name = args[0][1];
           this.file.category = this.category.getCategory(args[0][1]);
-          this.nameisvalid = args[0][0];
+          this.nameisvalid = args[0][0].state;
+          this.errorname = args[0][0].text;
         }
         break;
       case 'author':
         {
           this.file.author = args[0][1];
-          this.authorisvalid = args[0][0];
+          this.authorisvalid = args[0][0].state;
+          this.errorauthor = args[0][0].text;
         }
         break;
       case 'size':
         {
           this.file.size = args[0][1];
-          this.sizeisvalid = args[0][0];
+          this.sizeisvalid = args[0][0].state;
+          this.errorsize = args[0][0].text;
         }
         break;
     }
@@ -64,6 +72,5 @@ export class AddingComponent implements OnInit {
     } else {
       this.formisvalid = false;
     }
-    console.log(this.file);
   }
 }
