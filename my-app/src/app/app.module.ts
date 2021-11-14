@@ -12,13 +12,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './features/footer/footer.component';
 import { HeaderModule } from './features/header/header.module';
-import { MenuModule } from './features/menu/menu.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
-
 
 @NgModule({
   declarations: [AppComponent, FooterComponent],
@@ -28,7 +26,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     HttpClientModule,
     HeaderModule,
-    MenuModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

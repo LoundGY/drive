@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -10,13 +10,8 @@ export class MenuComponent implements OnInit {
   public plus: string = '../../../assets/img/plus.svg';
   public menuRoutes: string[] = ['all', 'maps', 'images', 'movies', 'other'];
   public index: number = 0;
-  constructor(private router: Router, private routeasd: ActivatedRoute) {
-    console.log(routeasd.url);
-  }
+  constructor(private router: Router) {}
   ngOnInit(): void {
-    this.routeasd.queryParams.subscribe((params) => {
-      console.log(params);
-    });
     setTimeout(() => {
       switch (this.router.url) {
         case '/maps':
