@@ -67,6 +67,7 @@
             }
         }
     }
+
     &__files {
         margin-top: 29px;
         background: #ffffff;
@@ -76,6 +77,8 @@
         box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.05);
         border-radius: 15px;
         box-sizing: border-box;
+        overflow: auto;
+        height: 830px;
         .files__fields {
             display: flex;
             height: 49px;

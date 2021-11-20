@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UploadService {
-  private baseUrl = 'http://drive/functions/drive';
-
+  // private baseUrl: string = 'https://seatest.h1n.ru';
+  private baseUrl: string = 'http://drive';
   constructor(private http: HttpClient) {}
 
   upload(file: File): Observable<HttpEvent<any>> {
@@ -15,12 +15,16 @@ export class UploadService {
 
     formData.append('file', file);
 
-    const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
-      reportProgress: true,
-      responseType: 'json',
-    });
+    const req = new HttpRequest(
+      'POST',
+      `${this.baseUrl}/functions/drive/upload`,
+      formData,
+      {
+        reportProgress: true,
+        responseType: 'json',
+      }
+    );
 
     return this.http.request(req);
   }
-
 }

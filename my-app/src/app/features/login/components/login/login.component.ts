@@ -14,11 +14,11 @@ import { LoginService } from 'src/app/common/services/login/login.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  loading = false;
-  submitted = false;
-  returnUrl: string;
-  error = '';
+  public loginForm: FormGroup;
+  public loading: boolean = false;
+  public submitted: boolean = false;
+  public returnUrl: string;
+  public error: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -57,14 +57,13 @@ export class LoginComponent implements OnInit {
     this.authenticationService
       .login(this.form.username.value, this.form.password.value)
       .pipe(first())
-      .subscribe(
-        (data) => {
+      .subscribe((data) => {
+        if (data.error) {
+          this.error = data.error;
+        } else {
           this.router.navigate([this.returnUrl]);
-        },
-        (error) => {
-          this.error = error.error;
-          this.loading = false;
         }
-      );
+        this.loading = false;
+      });
   }
 }

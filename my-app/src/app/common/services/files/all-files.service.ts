@@ -9,8 +9,9 @@ import { GenerateCategory } from '../generate-category.service';
   providedIn: 'root',
 })
 export class AllFiles {
-  private baseUrl = 'http://drive/functions/drive';
   public dataFiles;
+  // private baseUrl: string = 'https://seatest.h1n.ru';
+  private baseUrl: string = 'http://drive';
   public files: TableRow[] = [];
   public file: TableRow = {
     id: 0,
@@ -24,8 +25,9 @@ export class AllFiles {
   constructor(private http: HttpClient, private genCat: GenerateCategory) {}
 
   getData(): TableRow[] {
-    const files$ = this.http.get(`${this.baseUrl}/files`);
+    const files$ = this.http.get(`${this.baseUrl}/functions/drive/files.php`);
     files$.subscribe((el) => {
+      console.log(el);
       this.dataFiles = el;
       this.dataFiles.data.forEach((element) => {
         this.file.id = element.id;

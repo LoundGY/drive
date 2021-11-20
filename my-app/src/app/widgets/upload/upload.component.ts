@@ -8,7 +8,7 @@ import { UploadService } from 'src/app/common/services/files/upload.service';
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.scss'],
 })
-export class UploadComponent implements OnInit {
+export class UploadComponent {
   public files: File[] = [];
   public filesProgress = new Map();
   message = '';
@@ -35,19 +35,12 @@ export class UploadComponent implements OnInit {
     this.files.splice(index, 1);
   }
   constructor(private uploadService: UploadService) {}
-  ngOnInit(): void {
-    //this.fileInfos = this.uploadService;
-    console.log(this.fileInfos);
-    
-  }
 
   upload(): void {
     for (let i = 0; i < this.files.length; i++) {
       if (!(this.filesProgress.get(this.files[i]) > 0)) {
-        console.log(this.files[i]);
         this.uploadService.upload(this.files[i]).subscribe(
           (event) => {
-            console.log(event);
             if (event.type === HttpEventType.UploadProgress) {
               //this.filesProgress.g
               this.filesProgress.set(
