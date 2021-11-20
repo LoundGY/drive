@@ -1,8 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { TableRow } from 'src/app/common/interfaces/table.interface';
 import { AllFiles } from 'src/app/common/services/files/all-files.service';
-import { AddingComponent } from 'src/app/widgets/adding/components/adding/adding.component';
 
 @Component({
   selector: 'app-all',
@@ -13,17 +11,13 @@ export class AllComponent implements OnInit {
   public search: string = '';
   public selectedFiles: number[] = [];
   public files: TableRow[];
-  private lastIndex: number;
 
   private allFiles: TableRow[] = [];
 
-  constructor(private myFiles: AllFiles, public dialog: MatDialog) {}
+  constructor(private myFiles: AllFiles) {}
 
   ngOnInit(): void {
     this.files = this.myFiles.getData();
-    this.lastIndex = this.files.reduce((acc, curr) =>
-      acc.id > curr.id ? acc : curr
-    ).id;
     this.allFiles = this.files;
   }
   ngOnChanges(): void {
@@ -62,17 +56,6 @@ export class AllComponent implements OnInit {
         this.files.findIndex((el) => el.id === element),
         1
       );
-    });
-  }
-
-  public openDialog(): void {
-    const dialogRef = this.dialog.open(AddingComponent, {
-      width: '350px',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      result.id = this.lastIndex + 1;
-      this.allFiles.push(result);
     });
   }
 }

@@ -1,4 +1,8 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,6 +17,9 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './features/footer/footer.component';
 import { HeaderModule } from './features/header/header.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrorInterceptor } from './common/services/login/error.interceptor';
+import { JwtInterceptor } from './common/services/login/jwt.interceptor';
+import { GenerateCategory } from 'src/app/common/services/generate-category.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -36,7 +43,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
   ],
 
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    GenerateCategory,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {

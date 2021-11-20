@@ -1,6 +1,10 @@
 <div class="upload">
   <div class="buttons">
-    <button *ngIf="files.length > 0" [disabled]="true" class="button download">
+    <button
+      [disabled]="!(files.length > 0)"
+      (click)="upload()"
+      class="button download"
+    >
       {{ "UPLOAD" | translate }}
     </button>
   </div>
@@ -8,12 +12,18 @@
     <input
       type="file"
       #fileDropRef
-      id="fileDropRef"
       multiple
       (change)="fileBrowseHandler($event)"
     />
 
-    <div class="single-file" *ngFor="let file of files; let i = index">
+    <div
+      class="single-file"
+      *ngFor="let file of files; let i = index"
+      [ngClass]="{
+        ready: filesProgress.get(file) == 100,
+        error: filesProgress.get(file) == -5
+      }"
+    >
       <img class="icon" src="../../../assets/img/doc.svg" alt="file" />
       <div class="info">
         <h4 class="name" title="{{ file?.name }}">
@@ -22,7 +32,7 @@
         <p class="size">
           {{ formatBytes(file?.size) }}
         </p>
-        <app-progress [progress]="file?.progress"></app-progress>
+        <app-progress [progress]="filesProgress.get(file)"></app-progress>
       </div>
       <img
         src="../../../assets/img/cancel.svg"

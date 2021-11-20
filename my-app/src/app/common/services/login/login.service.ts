@@ -35,6 +35,17 @@ export class LoginService {
       );
   }
 
+  check() {
+    return this.http
+      .post<any>('http://drive/functions/auth/check.php', { asd: 'zxc' })
+      .pipe(
+        map((user) => {
+          console.log(user);
+          return user;
+        })
+      );
+  }
+
   logout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);

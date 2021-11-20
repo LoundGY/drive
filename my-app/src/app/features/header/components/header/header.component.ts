@@ -19,6 +19,9 @@ export class HeaderComponent {
     this.authenticationService.currentUser.subscribe(
       (x) => (this.currentUser = x)
     );
+    this.authenticationService.check().subscribe((response) => {
+      console.log(response);
+    });
   }
 
   public logout(): void {

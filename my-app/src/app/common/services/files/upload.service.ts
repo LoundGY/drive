@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UploadService {
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'http://drive/functions/drive';
 
   constructor(private http: HttpClient) {}
 
@@ -23,7 +23,4 @@ export class UploadService {
     return this.http.request(req);
   }
 
-  getFiles(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/files`);
-  }
 }

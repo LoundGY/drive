@@ -5,7 +5,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { TooltipModule } from '../../../directives/tooltip/tooltip.module';
 import { FileModule } from '../../../widgets/file/file.module';
-import { AddingModule } from 'src/app/widgets/adding/adding.module';
 import { AllRoutingModule } from './all-routing.module';
 import { AllComponent } from './components/all/all.component';
 import { AllFiles } from '../../../common/services/files/all-files.service';
@@ -19,7 +18,6 @@ import { AllFiles } from '../../../common/services/files/all-files.service';
     FileModule,
     TranslateModule,
     TooltipModule,
-    AddingModule,
     MatButtonModule,
   ],
   providers: [AllFiles],
