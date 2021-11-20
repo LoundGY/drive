@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-switcher',
@@ -19,11 +20,20 @@ export class SwitcherComponent {
   public isMenuOpen: boolean = false;
   public currentLang: string;
   public languages: string[] = ['en', 'pl', 'ru'];
-  languageControl = new FormControl('', Validators.required);
 
   constructor(private renderer: Renderer2, public translate: TranslateService) {
     translate.setDefaultLang('en');
     translate.addLangs(this.languages);
+    this.renderer.listen('window', 'click', (e: Event) => {
+      if (this.menu && this.toggleButton) {
+        if (
+          e.target !== this.toggleButton.nativeElement &&
+          e.target !== this.menu.nativeElement
+        ) {
+          this.isMenuOpen = false;
+        }
+      }
+    });
   }
 
   public toggleMenu(): void {
@@ -31,5 +41,6 @@ export class SwitcherComponent {
   }
   public switch(lang: string): void {
     this.translate.use(lang);
+    this.toggleMenu();
   }
 }

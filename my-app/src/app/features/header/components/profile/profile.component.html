@@ -1,16 +1,12 @@
 <div class="switch" mdbDropdown>
   <div class="switch__butt" (click)="toggleMenu()">
-    <mat-icon aria-hidden="false">language</mat-icon>
+    <mat-icon aria-hidden="false">account_circle</mat-icon>
     <div #toggleButton class="full"></div>
   </div>
 
   <div *ngIf="isMenuOpen" class="dropdown" #menu>
-    <div
-      *ngFor="let item of languages"
-      (click)="switch(item)"
-      class="dropdown__item"
-    >
-      {{ "LANGUAGES." + item | translate }}
+    <div class="dropdown__item">
+      <div (click)="logout()">{{ "LOGOUT" | translate }}</div>
     </div>
   </div>
 </div>

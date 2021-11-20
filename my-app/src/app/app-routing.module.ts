@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, ActivatedRoute, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './common/services/login/auth.guard';
 
 const routes: Routes = [
   {
@@ -11,7 +11,14 @@ const routes: Routes = [
         path: 'drive',
         loadChildren: () =>
           import('./features/menu/menu.module').then((m) => m.MenuModule),
+        canActivate: [AuthGuard],
       },
+      {
+        path: 'login',
+        loadChildren: () =>
+          import('./features/login/login.module').then((m) => m.LoginModule),
+      },
+      { path: '**', redirectTo: '' },
     ],
   },
 ];

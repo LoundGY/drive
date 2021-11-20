@@ -1,3 +1,10 @@
+div,
+li,
+a,
+input,
+select {
+    outline: none;
+}
 .mainMenu {
     position: absolute;
     background: #ffffff;
@@ -68,4 +75,3 @@
         }
     }
 }
-

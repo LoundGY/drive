@@ -5,6 +5,9 @@
         <img src="{{ logo }}" />
       </a>
     </div>
-    <app-switcher></app-switcher>
+    <div class="right-menu">
+      <app-switcher></app-switcher>
+      <app-profile *ngIf="currentUser"></app-profile>
+    </div>
   </div>
 </header>
