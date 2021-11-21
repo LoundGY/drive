@@ -77,8 +77,11 @@
         box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.05);
         border-radius: 15px;
         box-sizing: border-box;
-        overflow: auto;
-        height: 830px;
+        max-height: 830px;
+        .files__all {
+            overflow: auto;
+            height: calc(100% - 49px);
+        }
         .files__fields {
             display: flex;
             height: 49px;
@@ -97,23 +100,15 @@
             &:not(:last-child)::after {
                 content: "";
                 position: absolute;
-                right: 0;
+                right: 1px;
                 top: 17px;
                 background: #777777;
                 height: 18px;
                 width: 1px;
             }
-            .up::after {
-                content: "▲";
-                cursor: pointer;
+            .down {
                 position: relative;
-                font-size: 20px;
-            }
-            .down::after {
-                cursor: pointer;
-                content: "▼";
-                position: relative;
-                font-size: 20px;
+                top: 8px;
             }
         }
     }

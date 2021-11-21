@@ -8,7 +8,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
   public plus: string = '../../../assets/img/plus.svg';
-  public menuRoutes: string[] = ['all', 'maps', 'images', 'movies', 'other'];
+  public menuRoutes: string[] = ['all', 'map', 'image', 'movie', 'other'];
   public index: number = 0;
   constructor(private router: Router) {
   }

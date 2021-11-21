@@ -20,23 +20,29 @@ export class AllFiles {
     date: new Date(),
     category: '',
     size: '0',
+    hash: '',
   };
 
   constructor(private http: HttpClient, private genCat: GenerateCategory) {}
 
-  getData(): TableRow[] {
+  getData(type: string = 'all'): TableRow[] {
+    this.files.length = 0;
     const files$ = this.http.get(`${this.baseUrl}/functions/drive/files.php`);
     files$.subscribe((el) => {
-      console.log(el);
       this.dataFiles = el;
       this.dataFiles.data.forEach((element) => {
-        this.file.id = element.id;
-        this.file.author = element.login;
-        this.file.name = element.name;
-        this.file.date = element.date;
-        this.file.category = this.genCat.getCategory(element.name);
-        this.file.size = this.genCat.formatBytes(element.size);
-        this.files.push(this.file);
+        this.file = {
+          id: element.id,
+          author: element.login,
+          name: element.name,
+          date: element.date,
+          category: this.genCat.getCategory(element.name),
+          size: this.genCat.formatBytes(element.size),
+          hash: element.hash,
+        };
+        if (this.file.category === type || type === 'all') {
+          this.files.push(this.file);
+        }
       });
     });
 

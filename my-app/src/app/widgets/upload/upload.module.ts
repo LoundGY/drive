@@ -5,15 +5,15 @@ import { UploadRoutingModule } from './upload-routing.module';
 import { UploadComponent } from './upload.component';
 import { DndDirective } from '../../directives/upload/dnd.directive';
 import { ProgressComponent } from './progress/progress.component';
-import { FileTitlePipe } from './pipes/fileTitle.pipe';
+import { FileTitleModule } from '../../common/pipes/fileTitle/FileTitle.module';
 
 @NgModule({
-  declarations: [
-    UploadComponent,
-    ProgressComponent,
-    FileTitlePipe,
-    DndDirective,
+  declarations: [UploadComponent, ProgressComponent, DndDirective],
+  imports: [
+    CommonModule,
+    UploadRoutingModule,
+    TranslateModule,
+    FileTitleModule,
   ],
-  imports: [CommonModule, UploadRoutingModule, TranslateModule],
 })
 export class UploadModule {}

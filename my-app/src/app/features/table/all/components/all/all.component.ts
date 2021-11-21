@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { TableRow } from 'src/app/common/interfaces/table.interface';
 import { AllFiles } from 'src/app/common/services/files/all-files.service';
+import { DownloaddService } from 'src/app/common/services/files/download.service';
 
 @Component({
   selector: 'app-all',
@@ -14,12 +16,18 @@ export class AllComponent implements OnInit {
 
   private allFiles: TableRow[] = [];
 
-  constructor(private myFiles: AllFiles) {}
+  constructor(
+    private myFiles: AllFiles,
+    private downloads: DownloaddService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.files = this.myFiles.getData();
+    const typeuRL = this.router.url.split('/');
+    this.files = this.myFiles.getData(typeuRL[typeuRL.length - 1]);
     this.allFiles = this.files;
   }
+
   ngOnChanges(): void {
     this.allFiles = this.files;
     this.updateSearch();
@@ -48,6 +56,7 @@ export class AllComponent implements OnInit {
     } else {
       this.selectedFiles.push(index);
     }
+    console.log(this.selectedFiles);
   }
 
   public deleteItems(): void {
@@ -56,6 +65,20 @@ export class AllComponent implements OnInit {
         this.files.findIndex((el) => el.id === element),
         1
       );
+    });
+  }
+  public download(): void {
+    this.selectedFiles.forEach((element) => {
+      const file = this.files.find((el) => el.id === element);
+
+      this.downloads.download(file.hash).subscribe((blob) => {
+        const a = document.createElement('a');
+        const objectUrl = URL.createObjectURL(blob);
+        a.href = objectUrl;
+        a.download = file.name;
+        a.click();
+        URL.revokeObjectURL(objectUrl);
+      });
     });
   }
 }

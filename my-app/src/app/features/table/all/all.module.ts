@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { TooltipModule } from '../../../directives/tooltip/tooltip.module';
 import { FileModule } from '../../../widgets/file/file.module';
 import { AllRoutingModule } from './all-routing.module';
+import { MatIconModule } from '@angular/material/icon';
 import { AllComponent } from './components/all/all.component';
 import { AllFiles } from '../../../common/services/files/all-files.service';
 
@@ -19,6 +20,7 @@ import { AllFiles } from '../../../common/services/files/all-files.service';
     TranslateModule,
     TooltipModule,
     MatButtonModule,
+    MatIconModule,
   ],
   providers: [AllFiles],
 })

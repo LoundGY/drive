@@ -15,9 +15,9 @@
     },
     "MENU":{
         "all":"Wszystko", 
-        "maps":"Mapy", 
-        "images":"Zdjęcia", 
-        "movies":"Filmy", 
+        "map":"Mapy", 
+        "image":"Zdjęcia", 
+        "movie":"Filmy", 
         "other":"Inne"
     },
     "TABLE":{

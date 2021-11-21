@@ -5,4 +5,5 @@ export interface TableRow {
   size: string;
   category: string;
   date: Date;
-};
+  hash: string;
+}
