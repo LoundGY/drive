@@ -1,4 +1,6 @@
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   Input,
@@ -13,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'app-switcher',
   templateUrl: './switcher.component.html',
   styleUrls: ['./switcher.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SwitcherComponent {
   @ViewChild('toggleButton') toggleButton: ElementRef;
@@ -21,7 +24,11 @@ export class SwitcherComponent {
   public currentLang: string;
   public languages: string[] = ['en', 'pl', 'ru'];
 
-  constructor(private renderer: Renderer2, public translate: TranslateService) {
+  constructor(
+    private renderer: Renderer2,
+    public translate: TranslateService,
+    private cdr: ChangeDetectorRef
+  ) {
     translate.setDefaultLang('en');
     translate.addLangs(this.languages);
     this.renderer.listen('window', 'click', (e: Event) => {
@@ -31,6 +38,7 @@ export class SwitcherComponent {
           e.target !== this.menu.nativeElement
         ) {
           this.isMenuOpen = false;
+          this.cdr.detectChanges();
         }
       }
     });

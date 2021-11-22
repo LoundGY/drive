@@ -11,6 +11,7 @@ export class GenerateCategory {
   public videoExt: string[] = ['mp4', 'mp3', 'mpg', 'mov', 'wmv', 'avi'];
   public imageExt: string[] = ['jpeg', 'jpg', 'png', 'gif', 'ico'];
   public mapExt: string[] = ['kml', 'mp0'];
+  
   getCategory(name: string): string {
     const fileExt = name.split('.').pop();
     if (this.videoExt.includes(fileExt.toLowerCase())) {
@@ -24,6 +25,7 @@ export class GenerateCategory {
     }
     return this.category;
   }
+  
   public formatBytes(bytes, decimals = 2): string {
     if (bytes === 0) {
       return '0 Bytes';

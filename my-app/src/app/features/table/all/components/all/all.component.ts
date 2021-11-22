@@ -1,11 +1,19 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Inject,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { TableRow } from 'src/app/common/interfaces/table.interface';
 import { AllFiles } from 'src/app/common/services/files/all-files.service';
 import { DownloaddService } from 'src/app/common/services/files/download.service';
+import { GenerateCategory } from 'src/app/common/services/generate-category.service';
 
 @Component({
   selector: 'app-all',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './all.component.html',
   styleUrls: ['./all.component.scss'],
 })
@@ -19,18 +27,38 @@ export class AllComponent implements OnInit {
   constructor(
     private myFiles: AllFiles,
     private downloads: DownloaddService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+    private genCat: GenerateCategory
   ) {}
 
   ngOnInit(): void {
     const typeuRL = this.router.url.split('/');
-    this.files = this.myFiles.getData(typeuRL[typeuRL.length - 1]);
-    this.allFiles = this.files;
-  }
 
-  ngOnChanges(): void {
-    this.allFiles = this.files;
-    this.updateSearch();
+    this.myFiles.getData(typeuRL[typeuRL.length - 1]).subscribe((data: any) => {
+      //this.files = data;
+      const newFiles: TableRow[] = [];
+      data.forEach((file) => {
+        const newfile = {
+          id: file.id,
+          author: file.login,
+          name: file.name,
+          date: file.date,
+          category: this.genCat.getCategory(file.name),
+          size: this.genCat.formatBytes(file.size),
+          hash: file.hash,
+        };
+        if (
+          newfile.category === typeuRL[typeuRL.length - 1] ||
+          typeuRL[typeuRL.length - 1] === 'all'
+        ) {
+          newFiles.push(newfile);
+        }
+      });
+      this.files = newFiles;
+      this.allFiles = this.files;
+      this.cdr.detectChanges();
+    });
   }
 
   public sortFiles(field: string): void {
@@ -59,14 +87,8 @@ export class AllComponent implements OnInit {
     console.log(this.selectedFiles);
   }
 
-  public deleteItems(): void {
-    this.selectedFiles.forEach((element) => {
-      this.files.splice(
-        this.files.findIndex((el) => el.id === element),
-        1
-      );
-    });
-  }
+  public deleteItems(): void {}
+
   public download(): void {
     this.selectedFiles.forEach((element) => {
       const file = this.files.find((el) => el.id === element);

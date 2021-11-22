@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/common/interfaces/user.interface';
 import { LoginService } from 'src/app/common/services/login/login.service';
@@ -7,6 +7,7 @@ import { LoginService } from 'src/app/common/services/login/login.service';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class HeaderComponent {
   public logo: string = '../../../assets/img/logos/logoHeader.png';
@@ -19,9 +20,6 @@ export class HeaderComponent {
     this.authenticationService.currentUser.subscribe(
       (x) => (this.currentUser = x)
     );
-    /*this.authenticationService.check().subscribe((response) => {
-      console.log(response);
-    });*/
   }
 
   public logout(): void {

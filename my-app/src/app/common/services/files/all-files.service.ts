@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TableRow } from '../../interfaces/table.interface';
 import { Observable, from } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { GenerateCategory } from '../generate-category.service';
 
 @Injectable({
@@ -25,10 +25,19 @@ export class AllFiles {
 
   constructor(private http: HttpClient, private genCat: GenerateCategory) {}
 
-  getData(type: string = 'all'): TableRow[] {
+  getData(type: string = 'all'): Observable<any> {
     this.files.length = 0;
-    const files$ = this.http.get(`${this.baseUrl}/functions/drive/files.php`);
-    files$.subscribe((el) => {
+    const files$ = this.http
+      .get(`${this.baseUrl}/functions/drive/files.php`)
+      .pipe(
+        map((data: any) => data.data),
+        /*filter((file: any) => {
+          console.log(this.genCat.getCategory(file.name));
+          return this.genCat.getCategory(file.name) === type || type === 'all';
+        })*/
+      );
+    /*files$.subscribe((el) => {
+      console.log(el);
       this.dataFiles = el;
       this.dataFiles.data.forEach((element) => {
         this.file = {
@@ -45,7 +54,7 @@ export class AllFiles {
         }
       });
     });
-
-    return this.files;
+*/
+    return files$;
   }
 }

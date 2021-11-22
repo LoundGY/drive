@@ -1,4 +1,6 @@
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   Input,
@@ -14,6 +16,7 @@ import { LoginService } from 'src/app/common/services/login/login.service';
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileComponent {
   @ViewChild('toggleButton') toggleButton: ElementRef;
@@ -23,7 +26,8 @@ export class ProfileComponent {
   constructor(
     private renderer: Renderer2,
     private router: Router,
-    private authenticationService: LoginService
+    private authenticationService: LoginService,
+    private cdr: ChangeDetectorRef
   ) {
     this.authenticationService.currentUser.subscribe(
       (x) => (this.currentUser = x)
@@ -35,6 +39,7 @@ export class ProfileComponent {
           e.target !== this.menu.nativeElement
         ) {
           this.isMenuOpen = false;
+          this.cdr.detectChanges();
         }
       }
     });

@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuComponent implements OnInit {
   public plus: string = '../../../assets/img/plus.svg';
   public menuRoutes: string[] = ['all', 'map', 'image', 'movie', 'other'];
   public index: number = 0;
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router, private cdr: ChangeDetectorRef) {}
   ngOnInit(): void {
     switch (this.router.url) {
       case '/drive/maps':

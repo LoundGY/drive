@@ -8,7 +8,7 @@ import { User } from 'src/app/common/interfaces/user.interface';
 export class LoginService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
-  // private baseUrl: string = 'https://seatest.h1n.ru';
+  //private baseUrl: string = 'https://seatest.h1n.ru';
   private baseUrl: string = 'http://drive';
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(
