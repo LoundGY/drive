@@ -1,6 +1,6 @@
 <div class="mainMenu">
   <h1 class="mainMenu__drive">Drive</h1>
-  <div routerLink="./upload" class="mainMenu__addFileButton">
+  <div (click)="addFiles()" class="mainMenu__addFileButton">
     <span class="text">{{ "ADD" | translate }}</span
     >{{ " " }}
     <img class="largePlus" src="{{ plus }}" />
@@ -16,5 +16,8 @@
       {{ "MENU." + item | translate }}
     </li>
   </ul>
+  <div class="mainMenu__space">
+    {{spaceSize}}
+  </div>
 </div>
 <router-outlet></router-outlet>

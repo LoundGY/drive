@@ -8,6 +8,11 @@ const routes: Routes = [
     component: MenuComponent,
     children: [
       {
+        path: 'my',
+        loadChildren: () =>
+          import('../table/all/all.module').then((m) => m.AllModule),
+      },
+      {
         path: 'all',
         loadChildren: () =>
           import('../table/all/all.module').then((m) => m.AllModule),
@@ -33,15 +38,8 @@ const routes: Routes = [
           import('../table/all/all.module').then((m) => m.AllModule),
       },
       {
-        path: 'upload',
-        loadChildren: () =>
-          import('src/app/widgets/upload/upload.module').then(
-            (m) => m.UploadModule
-          ),
-      },
-      {
         path: '**',
-        redirectTo: 'all',
+        redirectTo: 'my',
         pathMatch: 'full',
       },
     ],

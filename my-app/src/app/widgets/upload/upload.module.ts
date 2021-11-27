@@ -15,5 +15,6 @@ import { FileTitleModule } from '../../common/pipes/fileTitle/FileTitle.module';
     TranslateModule,
     FileTitleModule,
   ],
+  exports: [UploadComponent, ProgressComponent, DndDirective],
 })
 export class UploadModule {}

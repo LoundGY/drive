@@ -1,16 +1,8 @@
 <div class="upload">
-  <div class="buttons">
-    <button
-      [disabled]="!(files.length > 0)"
-      (click)="upload()"
-      class="button download"
-    >
-      {{ "UPLOAD" | translate }}
-    </button>
-  </div>
   <div class="container" appDnd (fileDropped)="onFileDropped($event)">
     <input
       type="file"
+      id="fileZone"
       #fileDropRef
       multiple
       (change)="fileBrowseHandler($event)"
@@ -42,5 +34,14 @@
         (click)="deleteFile(i)"
       />
     </div>
+  </div>
+  <div class="buttons">
+    <button
+      [disabled]="!(files.length > 0)"
+      (click)="upload()"
+      class="button download"
+    >
+      {{ "UPLOAD" | translate }}
+    </button>
   </div>
 </div>

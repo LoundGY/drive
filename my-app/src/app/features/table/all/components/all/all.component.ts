@@ -33,10 +33,11 @@ export class AllComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getFiles();
+  }
+  public getFiles(): void {
     const typeuRL = this.router.url.split('/');
-
     this.myFiles.getData(typeuRL[typeuRL.length - 1]).subscribe((data: any) => {
-      //this.files = data;
       const newFiles: TableRow[] = [];
       data.forEach((file) => {
         const newfile = {
@@ -44,23 +45,17 @@ export class AllComponent implements OnInit {
           author: file.login,
           name: file.name,
           date: file.date,
-          category: this.genCat.getCategory(file.name),
+          category: file.category ? file.category : 'other',
           size: this.genCat.formatBytes(file.size),
           hash: file.hash,
         };
-        if (
-          newfile.category === typeuRL[typeuRL.length - 1] ||
-          typeuRL[typeuRL.length - 1] === 'all'
-        ) {
-          newFiles.push(newfile);
-        }
+        newFiles.push(newfile);
       });
       this.files = newFiles;
       this.allFiles = this.files;
       this.cdr.detectChanges();
     });
   }
-
   public sortFiles(field: string): void {
     this.files.sort((a, b) => {
       if (a[field] < b[field]) {

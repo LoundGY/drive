@@ -9,6 +9,7 @@ import { AllRoutingModule } from './all-routing.module';
 import { MatIconModule } from '@angular/material/icon';
 import { AllComponent } from './components/all/all.component';
 import { AllFiles } from '../../../common/services/files/all-files.service';
+import { UploadModule } from 'src/app/widgets/upload/upload.module';
 
 @NgModule({
   declarations: [AllComponent],
@@ -21,6 +22,7 @@ import { AllFiles } from '../../../common/services/files/all-files.service';
     TooltipModule,
     MatButtonModule,
     MatIconModule,
+    UploadModule,
   ],
   providers: [AllFiles],
 })

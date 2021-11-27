@@ -5,10 +5,12 @@ import { MenuRoutingModule } from './menu-routing.module';
 import { MenuComponent } from './components/menu/menu.component';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { SpaceService } from 'src/app/common/services/files/space.service';
 
 @NgModule({
   declarations: [MenuComponent],
   imports: [CommonModule, MenuRoutingModule, TranslateModule],
   exports: [MenuComponent],
+  providers: [SpaceService],
 })
 export class MenuModule {}

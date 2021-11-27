@@ -24,6 +24,7 @@
       </div>
     </div>
   </div>
+  <app-upload (fileLoad)="getFiles()"></app-upload>
   <div class="main-block__files">
     <div class="files__fields">
       <div class="field-first"></div>
@@ -51,8 +52,6 @@
     <div class="files__all">
       <app-file
         *ngFor="let file of files"
-        [tooltip]="file.name"
-        [offset]="5"
         [file]="file"
         (chooseItem)="chooseItem($event)"
       ></app-file>

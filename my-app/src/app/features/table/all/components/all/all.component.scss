@@ -1,12 +1,12 @@
 .main-block {
     position: absolute;
-    left: 307px;
+    left: 335px;
     height: calc(100% - 136px);
     width: calc(100% - 359px);
-    padding-top: 35px;
-    padding-left: 52px;
     box-sizing: border-box;
     &__top {
+        position: relative;
+        top: 35px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -51,9 +51,11 @@
             border-radius: 50px;
             text-align: center;
             box-sizing: border-box;
+            border: none;
         }
         .delete {
             background: #d02020;
+            border: none;
             &:hover,
             :active {
                 background: #911f1f;
@@ -61,6 +63,7 @@
         }
         .download {
             background: #333131;
+            border: none;
             &:hover,
             :active {
                 background: #242222;
@@ -69,10 +72,12 @@
     }
 
     &__files {
+        position: absolute;
+        bottom: 0;
         margin-top: 29px;
         background: #ffffff;
         z-index: 1;
-        height: calc(100% - 71px);
+        height: calc(100% - 395px);
         width: 100%;
         box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.05);
         border-radius: 15px;

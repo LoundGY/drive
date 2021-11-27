@@ -6,6 +6,8 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UploadService } from 'src/app/common/services/files/upload.service';
@@ -17,6 +19,7 @@ import { UploadService } from 'src/app/common/services/files/upload.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UploadComponent {
+  @Output() fileLoad = new EventEmitter<any>();
   public files: File[] = [];
   public filesProgress = new Map();
   public message = '';
@@ -57,6 +60,14 @@ export class UploadComponent {
                 this.files[i],
                 Math.round((100 * event.loaded) / event.total)
               );
+              if (this.filesProgress.get(this.files[i]) === 100) {
+                setTimeout(() => {
+                  this.files.splice(this.files.indexOf(this.files[i]), 1);
+                  this.filesProgress.delete(this.files[i]);
+                  this.fileLoad.emit();
+                  this.cdr.detectChanges();
+                }, 1000);
+              }
             } else if (event instanceof HttpResponse) {
               this.message = event.body.message;
             }

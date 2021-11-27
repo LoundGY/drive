@@ -21,6 +21,14 @@ select {
         font-size: 26px;
         color: #3e3e3e;
     }
+    &__space {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        font-size: 20px;
+        width: 100%;
+        text-align: center;
+    }
     &__addFileButton {
         margin-top: 22px;
         margin-bottom: 29px;

@@ -1,37 +1,57 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { SpaceService } from 'src/app/common/services/files/space.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuComponent implements OnInit {
   public plus: string = '../../../assets/img/plus.svg';
-  public menuRoutes: string[] = ['all', 'map', 'image', 'movie', 'other'];
+  public menuRoutes: string[] = ['my', 'all', 'map', 'image', 'movie', 'other'];
   public index: number = 0;
-  constructor(private router: Router, private cdr: ChangeDetectorRef) {}
+  public spaceSize: String = '';
+  constructor(
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+    private space: SpaceService
+  ) {}
   ngOnInit(): void {
     switch (this.router.url) {
-      case '/drive/maps':
+      case '/drive/my':
+        {
+          this.index = 0;
+        }
+        break;
+      case '/drive/all':
         {
           this.index = 1;
         }
         break;
-      case '/drive/images':
+      case '/drive/map':
         {
           this.index = 2;
         }
         break;
-      case '/drive/movies':
+      case '/drive/image':
         {
           this.index = 3;
         }
         break;
-      case '/drive/other':
+      case '/drive/movie':
         {
           this.index = 4;
+        }
+        break;
+      case '/drive/other':
+        {
+          this.index = 5;
         }
         break;
       default:
@@ -39,6 +59,20 @@ export class MenuComponent implements OnInit {
           this.index = 0;
         }
         break;
+    }
+    this.getSpace();
+  }
+
+  public getSpace(): void {
+    this.space.getSpace().subscribe((data) => {
+      this.spaceSize = data;
+    });
+  }
+
+  public addFiles(): void {
+    const inp = document.getElementById('fileZone');
+    if (inp) {
+      inp.click();
     }
   }
 

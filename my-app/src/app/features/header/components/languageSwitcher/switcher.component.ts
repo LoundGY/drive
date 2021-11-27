@@ -29,6 +29,7 @@ export class SwitcherComponent {
     public translate: TranslateService,
     private cdr: ChangeDetectorRef
   ) {
+    console.log('asd');
     translate.setDefaultLang('en');
     translate.addLangs(this.languages);
     this.renderer.listen('window', 'click', (e: Event) => {

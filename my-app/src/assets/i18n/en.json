@@ -14,7 +14,8 @@
         "pl":"Polish"
     },
     "MENU":{
-        "all":"All", 
+        "my":"My files",
+        "all":"All files", 
         "map":"Maps", 
         "image":"Images", 
         "movie":"Movies", 
