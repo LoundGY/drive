@@ -22,14 +22,14 @@ export class SwitcherComponent {
   @ViewChild('menu') menu: ElementRef;
   public isMenuOpen: boolean = false;
   public currentLang: string;
-  public languages: string[] = ['en', 'pl', 'ru'];
+  public languages: string[] = ['en', 'pl'];
+  //public languages: string[] = ['en', 'pl', 'ru'];
 
   constructor(
     private renderer: Renderer2,
     public translate: TranslateService,
     private cdr: ChangeDetectorRef
   ) {
-    console.log('asd');
     translate.setDefaultLang('en');
     translate.addLangs(this.languages);
     this.renderer.listen('window', 'click', (e: Event) => {

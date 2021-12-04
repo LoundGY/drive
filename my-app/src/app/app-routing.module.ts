@@ -18,7 +18,7 @@ const routes: Routes = [
         loadChildren: () =>
           import('./features/login/login.module').then((m) => m.LoginModule),
       },
-      { path: '**', redirectTo: '' },
+      { path: '**', redirectTo: '', pathMatch: 'full' },
     ],
   },
 ];

@@ -80,6 +80,9 @@ export class UploadComponent {
       }
     }
   }
+  public delete():void{
+    
+  }
   public formatBytes(bytes, decimals = 2): string {
     if (bytes === 0) {
       return '0 Bytes';

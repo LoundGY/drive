@@ -7,9 +7,12 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { TableRow } from 'src/app/common/interfaces/table.interface';
+import { User } from 'src/app/common/interfaces/user.interface';
 import { AllFiles } from 'src/app/common/services/files/all-files.service';
+import { DeleteService } from 'src/app/common/services/files/delete.service';
 import { DownloaddService } from 'src/app/common/services/files/download.service';
 import { GenerateCategory } from 'src/app/common/services/generate-category.service';
+import { LoginService } from 'src/app/common/services/login/login.service';
 
 @Component({
   selector: 'app-all',
@@ -18,7 +21,9 @@ import { GenerateCategory } from 'src/app/common/services/generate-category.serv
   styleUrls: ['./all.component.scss'],
 })
 export class AllComponent implements OnInit {
+  public currentUser: User;
   public search: string = '';
+  public path: string = '';
   public selectedFiles: number[] = [];
   public files: TableRow[];
 
@@ -28,11 +33,19 @@ export class AllComponent implements OnInit {
     private myFiles: AllFiles,
     private downloads: DownloaddService,
     private router: Router,
+    private deleteSer: DeleteService,
     private cdr: ChangeDetectorRef,
-    private genCat: GenerateCategory
-  ) {}
+    private genCat: GenerateCategory,
+    private authenticationService: LoginService
+  ) {
+    this.authenticationService.currentUser.subscribe(
+      (x) => (this.currentUser = x)
+    );
+  }
 
   ngOnInit(): void {
+    const typeuRL = this.router.url.split('/');
+    this.path = typeuRL[typeuRL.length - 1];
     this.getFiles();
   }
   public getFiles(): void {
@@ -79,15 +92,26 @@ export class AllComponent implements OnInit {
     } else {
       this.selectedFiles.push(index);
     }
-    console.log(this.selectedFiles);
   }
 
-  public deleteItems(): void {}
+  public deleteItems(): void {
+    this.selectedFiles.forEach((element) => {
+      const file = this.files.find((el) => el.id === element);
+      console.log(file.id);
+      this.deleteSer.delete(file.id).subscribe((data) => {
+        console.log(data);
+        const indexOfItem = this.selectedFiles.indexOf(element);
+        if (indexOfItem > -1) {
+          this.selectedFiles.splice(indexOfItem, 1);
+        }
+        this.getFiles();
+      });
+    });
+  }
 
   public download(): void {
     this.selectedFiles.forEach((element) => {
       const file = this.files.find((el) => el.id === element);
-
       this.downloads.download(file.hash).subscribe((blob) => {
         const a = document.createElement('a');
         const objectUrl = URL.createObjectURL(blob);
@@ -95,6 +119,11 @@ export class AllComponent implements OnInit {
         a.download = file.name;
         a.click();
         URL.revokeObjectURL(objectUrl);
+        const indexOfItem = this.selectedFiles.indexOf(element);
+        if (indexOfItem > -1) {
+          this.selectedFiles.splice(indexOfItem, 1);
+        }
+        this.getFiles();
       });
     });
   }

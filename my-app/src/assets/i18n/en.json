@@ -6,6 +6,7 @@
     "UPLOAD":"Upload",
     "DOWNLOAD":"Download",
     "DELETE":"Delete",
+    "SEARCH":"Search",
     "EMPTY-FIELD":"Fill in the field",
     "LANGUAGE":"Language",
     "LANGUAGES":{

@@ -6,26 +6,30 @@
         [(ngModel)]="search"
         (ngModelChange)="updateSearch()"
         class="search"
-        placeholder="Искать"
+        placeholder="{{ 'SEARCH' | translate }}"
         type="text"
         name="search"
       />
     </div>
     <div class="main-block__buttons">
       <div
-        *ngIf="false"
+        *ngIf="selectedFiles.length > 0 && currentUser.post == 1"
         class="button delete"
         (click)="deleteItems()"
       >
         {{ "DELETE" | translate }}
       </div>
-      <div *ngIf="selectedFiles.length > 0" (click)="download()" class="button download">
+      <div
+        *ngIf="selectedFiles.length > 0"
+        (click)="download()"
+        class="button download"
+      >
         {{ "DOWNLOAD" | translate }}
       </div>
     </div>
   </div>
-  <app-upload (fileLoad)="getFiles()"></app-upload>
-  <div class="main-block__files">
+  <app-upload *ngIf="path === 'my'" (fileLoad)="getFiles()"></app-upload>
+  <div class="main-block__files" [ngClass]="{ notMy: path !== 'my' }">
     <div class="files__fields">
       <div class="field-first"></div>
       <div (click)="sortFiles('name')" class="field">

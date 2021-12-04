@@ -39,19 +39,23 @@
         }
     }
     &__buttons {
-        width: 510px;
+        position: relative;
+        width: 310px;
         display: flex;
         justify-content: flex-end;
         .button {
-            width: 245px;
-            height: 44px;
-            line-height: 44px;
+            position: relative;
+            margin: 0 5px;
+            width: 145px;
+            font-size: 14px;
+            font-weight: 600;
+            height: 30px;
+            line-height: 30px;
             cursor: pointer;
             color: #ffffff;
             border-radius: 50px;
             text-align: center;
             box-sizing: border-box;
-            border: none;
         }
         .delete {
             background: #d02020;
@@ -70,14 +74,16 @@
             }
         }
     }
-
+    .notMy {
+        height: calc(100% - 105px);
+    }
     &__files {
         position: absolute;
         bottom: 0;
         margin-top: 29px;
         background: #ffffff;
         z-index: 1;
-        height: calc(100% - 395px);
+        height: calc(100% - 354px);
         width: 100%;
         box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.05);
         border-radius: 15px;

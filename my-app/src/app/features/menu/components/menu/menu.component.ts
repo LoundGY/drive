@@ -73,6 +73,15 @@ export class MenuComponent implements OnInit {
     const inp = document.getElementById('fileZone');
     if (inp) {
       inp.click();
+    } else {
+      this.router.navigateByUrl('/drive/my');
+      this.index = 0;
+      setTimeout(() => {
+        const inp1 = document.getElementById('fileZone');
+        if (inp1) {
+          inp1.click();
+        }
+      }, 500);
     }
   }
 

@@ -5,17 +5,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class DownloaddService {
+export class DeleteService {
   private baseUrl: string = '';
   //private baseUrl: string = 'http://drive';
   constructor(private http: HttpClient) {}
 
-  download(file: string): Observable<any> {
+  delete(file: number): Observable<any> {
     return this.http.get(
-      `${this.baseUrl}/functions/drive/download?filename=` + file,
-      {
-        responseType: 'blob',
-      }
+      `${this.baseUrl}/functions/drive/delete?filename=` + file
     );
   }
 }
