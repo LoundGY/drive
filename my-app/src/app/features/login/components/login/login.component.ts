@@ -1,4 +1,10 @@
-import { ApplicationRef, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  ApplicationRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -19,13 +25,14 @@ export class LoginComponent implements OnInit {
   public loading: boolean = false;
   public submitted: boolean = false;
   public returnUrl: string;
+  public loadLogin: boolean = false;
   public error: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: LoginService,
+    private authenticationService: LoginService
   ) {
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/']);
@@ -37,11 +44,9 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
-
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  // convenience getter for easy access to form fields
   get form() {
     return this.loginForm.controls;
   }
@@ -51,7 +56,6 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
     this.loading = true;
     this.authenticationService
       .login(this.form.username.value, this.form.password.value)
@@ -64,5 +68,8 @@ export class LoginComponent implements OnInit {
         }
         this.loading = false;
       });
+  }
+  public loginWithSupport(): void {
+    this.authenticationService.loginSupport();
   }
 }

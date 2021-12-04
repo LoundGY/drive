@@ -83,7 +83,7 @@
         margin-top: 29px;
         background: #ffffff;
         z-index: 1;
-        height: calc(100% - 354px);
+        height: calc(100% - 305px);
         width: 100%;
         box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.05);
         border-radius: 15px;
@@ -100,9 +100,6 @@
             background: #fdc303;
             border-radius: 15px 15px 0 0;
             text-align: center;
-        }
-        .field-first {
-            flex-basis: 50px;
         }
         .field {
             position: relative;
@@ -121,6 +118,33 @@
                 position: relative;
                 top: 8px;
             }
+            &:hover,
+            :active {
+                color: #373737;
+            }
+        }
+        .all {
+            flex-basis: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .name {
+            min-width: 250px;
+            flex-basis: calc(50% - 259px);
+        }
+        .author {
+            min-width: 250px;
+            flex-basis: calc(50% - 259px);
+        }
+        .size {
+            flex-basis: 150px;
+        }
+        .category {
+            flex-basis: 150px;
+        }
+        .date {
+            flex-basis: 170px;
         }
     }
 }

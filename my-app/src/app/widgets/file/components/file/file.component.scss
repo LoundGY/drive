@@ -17,4 +17,24 @@
     &.checked {
         background: #eaeaea;
     }
+    .all {
+        flex-basis: 50px;
+    }
+    .name {
+        min-width: 250px;
+        flex-basis: calc(50% - 259px);
+    }
+    .author {
+        min-width: 250px;
+        flex-basis: calc(50% - 259px);
+    }
+    .size {
+        flex-basis: 150px;
+    }
+    .category {
+        flex-basis: 150px;
+    }
+    .date {
+        flex-basis: 170px;
+    }
 }

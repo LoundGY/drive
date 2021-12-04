@@ -1,6 +1,9 @@
 <div class="login">
   <div class="login__title">Drive</div>
   <div class="login__form">
+    <div class="support">
+      <div (click)="loginWithSupport()">Login with suppor</div>
+    </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div *ngIf="error" class="error">
         <span>{{ error }}</span>
@@ -26,5 +29,6 @@
       </div>
       <button [disabled]="loading" class="btn">Login</button>
     </form>
+    
   </div>
 </div>

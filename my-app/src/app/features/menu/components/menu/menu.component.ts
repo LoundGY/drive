@@ -87,5 +87,6 @@ export class MenuComponent implements OnInit {
 
   public changeIndex(newIndex: number): void {
     this.index = newIndex;
+    this.getSpace();
   }
 }

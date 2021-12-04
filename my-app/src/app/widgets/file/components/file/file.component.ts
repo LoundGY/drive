@@ -4,6 +4,8 @@ import {
   Output,
   EventEmitter,
   ChangeDetectionStrategy,
+  DoCheck,
+  OnChanges,
 } from '@angular/core';
 import { TableRow } from 'src/app/common/interfaces/table.interface';
 
@@ -13,13 +15,17 @@ import { TableRow } from 'src/app/common/interfaces/table.interface';
   styleUrls: ['./file.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FileComponent {
+export class FileComponent implements OnChanges {
   @Input() file: TableRow;
+  @Input() choose: boolean;
   @Output() chooseItem = new EventEmitter<number>();
 
-  public checked: boolean = false;
+  public checked: boolean;
 
   constructor() {}
+  ngOnChanges() {
+    this.checked = this.choose;
+  }
 
   public chooseItemDone(id: number): void {
     this.checked = !this.checked;

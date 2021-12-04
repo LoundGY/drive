@@ -24,9 +24,8 @@ export class AllComponent implements OnInit {
   public currentUser: User;
   public search: string = '';
   public path: string = '';
-  public selectedFiles: number[] = [];
+  public selectedFiles: any[] = [];
   public files: TableRow[];
-
   private allFiles: TableRow[] = [];
 
   constructor(
@@ -36,7 +35,7 @@ export class AllComponent implements OnInit {
     private deleteSer: DeleteService,
     private cdr: ChangeDetectorRef,
     private genCat: GenerateCategory,
-    private authenticationService: LoginService
+    private authenticationService: LoginService,
   ) {
     this.authenticationService.currentUser.subscribe(
       (x) => (this.currentUser = x)
@@ -82,7 +81,9 @@ export class AllComponent implements OnInit {
   }
 
   public updateSearch(): void {
-    this.files = this.allFiles.filter((el) => el.name.includes(this.search));
+    this.files = this.allFiles.filter((el) =>
+      el.name.toLowerCase().includes(this.search.toLowerCase())
+    );
   }
 
   public chooseItem(index: number): void {
@@ -99,7 +100,6 @@ export class AllComponent implements OnInit {
       const file = this.files.find((el) => el.id === element);
       console.log(file.id);
       this.deleteSer.delete(file.id).subscribe((data) => {
-        console.log(data);
         const indexOfItem = this.selectedFiles.indexOf(element);
         if (indexOfItem > -1) {
           this.selectedFiles.splice(indexOfItem, 1);
@@ -110,7 +110,19 @@ export class AllComponent implements OnInit {
   }
 
   public download(): void {
-    this.selectedFiles.forEach((element) => {
+    console.log(this.selectedFiles);
+    this.downloads.download(this.selectedFiles).subscribe((blob) => {
+      console.log(blob);
+      const a = document.createElement('a');
+      const objectUrl = URL.createObjectURL(blob);
+      a.href = objectUrl;
+      a.download = 'SEADRIVE_' + Number(new Date()) + '.zip';
+      a.click();
+      URL.revokeObjectURL(objectUrl);
+      this.selectedFiles.length = 0;
+      this.getFiles();
+    });
+    /*this.selectedFiles.forEach((element) => {
       const file = this.files.find((el) => el.id === element);
       this.downloads.download(file.hash).subscribe((blob) => {
         const a = document.createElement('a');
@@ -125,6 +137,16 @@ export class AllComponent implements OnInit {
         }
         this.getFiles();
       });
-    });
+    });*/
+  }
+  public selectAll(): void {
+    if (this.selectedFiles.length < 1) {
+      this.files.forEach((file) => {
+        this.selectedFiles.push(file.id.toString());
+      });
+    } else {
+      this.selectedFiles.length = 0;
+    }
+    console.log(this.selectedFiles);
   }
 }

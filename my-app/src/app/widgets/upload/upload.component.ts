@@ -9,7 +9,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { UploadService } from 'src/app/common/services/files/upload.service';
 
 @Component({
@@ -34,32 +34,35 @@ export class UploadComponent {
     this.prepareFilesList(files.target.files);
   }
   public prepareFilesList(files: any[]): void {
+    console.log(this.files);
     for (const item of files) {
       item.progress = 0;
       this.files.push(item);
       this.filesProgress.set(item, 0);
     }
-  }
-  public filesChange(event) {
-    console.log(event);
+    this.upload();
   }
   public onFileDropped($event): void {
     this.prepareFilesList($event);
   }
   public deleteFile(index: number): void {
+    console.log(index);
     this.filesProgress.delete(this.files[index]);
     this.files.splice(index, 1);
   }
   public upload(): void {
     for (let i = 0; i < this.files.length; i++) {
       if (!(this.filesProgress.get(this.files[i]) > 0)) {
-        this.uploadService.upload(this.files[i]).subscribe(
+        const upload$ = this.uploadService.upload(this.files[i]).subscribe(
           (event) => {
             if (event.type === HttpEventType.UploadProgress) {
               this.filesProgress.set(
                 this.files[i],
                 Math.round((100 * event.loaded) / event.total)
               );
+              if (!this.files[i]) {
+                upload$.unsubscribe();
+              }
               if (this.filesProgress.get(this.files[i]) === 100) {
                 setTimeout(() => {
                   this.files.splice(this.files.indexOf(this.files[i]), 1);
@@ -80,9 +83,7 @@ export class UploadComponent {
       }
     }
   }
-  public delete():void{
-    
-  }
+  public delete(): void {}
   public formatBytes(bytes, decimals = 2): string {
     if (bytes === 0) {
       return '0 Bytes';
