@@ -1,4 +1,11 @@
 import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import {
   ApplicationRef,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -18,20 +25,38 @@ import { LoginService } from 'src/app/common/services/login/login.service';
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  animations: [
+    trigger('slideInOut', [
+      transition(':enter', [
+        style({ opacity: '0' }),
+        animate('200ms ease-in', style({ opacity: '1' })),
+      ]),
+      transition(':leave', [animate('200ms ease-in', style({ opacity: '0' }))]),
+    ]),
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
+  private loginErrors: any[] = [
+    ['1', 'not_login'],
+    ['2', 'not_allowed'],
+    ['3', 'wait_allowed'],
+    ['4', 'not_login'],
+  ];
   public loginForm: FormGroup;
+  public loginEmail: boolean = false;
   public loading: boolean = false;
   public submitted: boolean = false;
   public returnUrl: string;
-  public loadLogin: boolean = false;
+  public errorMap: Map<any, string> = new Map(this.loginErrors);
+  public currentError: string = '';
   public error: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private cdr: ChangeDetectorRef,
     private authenticationService: LoginService
   ) {
     if (this.authenticationService.currentUserValue) {
@@ -45,6 +70,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.currentError = this.route.snapshot.queryParams['error'];
   }
 
   get form() {
@@ -67,6 +93,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         }
         this.loading = false;
+        this.cdr.detectChanges();
       });
   }
   public loginWithSupport(): void {

@@ -1,10 +1,25 @@
 <div class="login">
   <div class="login__title">Drive</div>
   <div class="login__form">
-    <div class="support">
-      <div (click)="loginWithSupport()">Login with suppor</div>
+    <div *ngIf="currentError" class="error">
+      <span>{{ errorMap.get(currentError) | translate }}</span>
     </div>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="support">
+      <div class="support__title">{{ "log_with" | translate }}</div>
+      <div class="support__butt" (click)="loginWithSupport()">
+        Support Seacraft
+      </div>
+      <div (click)="loginEmail = !loginEmail" class="support__default">
+        {{ "log_email" | translate }}
+      </div>
+    </div>
+
+    <form
+      *ngIf="loginEmail"
+      [@slideInOut]
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+    >
       <div *ngIf="error" class="error">
         <span>{{ error }}</span>
       </div>
@@ -27,8 +42,10 @@
           [ngClass]="{ 'is-invalid': submitted && form.password.errors }"
         />
       </div>
-      <button [disabled]="loading" class="btn">Login</button>
+      <button [disabled]="loading" class="btn">
+        <ng-template #Login> Login </ng-template>
+        <mat-spinner *ngIf="loading; else Login" diameter="15"></mat-spinner>
+      </button>
     </form>
-    
   </div>
 </div>

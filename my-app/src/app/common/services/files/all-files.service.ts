@@ -9,8 +9,8 @@ import { GenerateCategory } from '../generate-category.service';
   providedIn: 'root',
 })
 export class AllFiles {
-  // private baseUrl: string = '';
-  private baseUrl: string = 'http://drive';
+  private baseUrl: string = '';
+  //private baseUrl: string = 'http://drive';
   public dataFiles;
   public files: TableRow[] = [];
   public file: TableRow = {

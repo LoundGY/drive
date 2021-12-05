@@ -1,4 +1,8 @@
 {
+    "ALLOW":"Allow",
+    "BAN":"Ban",
+    "MODER":"Moderator",
+    "USERS":"Users",
     "LOGOUT":"Log out",
     "ADDING":"Adding",
     "ADD":"Add",
@@ -27,10 +31,24 @@
         "author": "Author",
         "size": "Size",
         "category": "Category",
-        "date": "Date"
+        "date": "Date",
+        "login":"Name",
+        "email":"Email",
+        "post":"Post"
     },
     "image":"Image",
     "movie":"Movie",
     "map":"Map",
-    "other":"Other"
+    "other":"Other",
+    "POSTS":{
+        "post1":"Admin",
+        "post2":"Moderator",
+        "post3":"Allowed",
+        "post4":"Banned"
+    },
+    "log_with":"Log in using your account on",
+    "log_email":"Log in using your email",
+    "not_login":"Login first in support",
+    "not_allowed":"Wait for permission",
+    "wait_allowed":"Wait for permission"
 }

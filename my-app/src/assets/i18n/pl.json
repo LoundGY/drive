@@ -1,4 +1,8 @@
 {
+    "ALLOW":"Allow",
+    "BAN":"Ban",
+    "MODER":"Moderator",
+    "USERS":"Użytkownicy",
     "LOGOUT":"Wyloguj",
     "ADDING":"Dodatek",
     "ADD":"Dodaj",
@@ -32,5 +36,16 @@
     "image":"Obraz",
     "movie":"Wideo",
     "map":"Mapa",
-    "other":"Inne"
+    "other":"Inne",
+    "POSTS":{
+        "post1":"Admin",
+        "post2":"Moderator",
+        "post3":"Allowed",
+        "post4":"Banned"
+    },
+    "log_with":"Zaloguj się używając swojego konta",
+    "log_email":"Zaloguj się używając e-mail",
+    "not_login":"Zaloguj się najpierw w support",
+    "not_allowed":"Czekaj na pozwolenie",
+    "wait_allowed":"Czekaj na pozwolenie"
 }

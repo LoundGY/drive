@@ -1,0 +1,23 @@
+.fields {
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom: 1px double #e6e6e6;
+    &:hover {
+        background: #eaeaea;
+    }
+    &__first {
+        flex-basis: 50px;
+    }
+    &__field {
+        flex-basis: calc(33% - 22px);
+    }
+    &.checked {
+        background: #eaeaea;
+    }
+    .all {
+        flex-basis: 50px;
+    }
+}

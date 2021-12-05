@@ -7,8 +7,8 @@ import { filter, map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class SpaceService {
-  //private baseUrl: string = '';
-  private baseUrl: string = 'http://drive';
+  private baseUrl: string = '';
+  //private baseUrl: string = 'http://drive';
   public size_space: string = '';
 
   constructor(private http: HttpClient) {}

@@ -8,8 +8,8 @@ import { User } from 'src/app/common/interfaces/user.interface';
 export class LoginService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
-  //private baseUrl: string = '';
-  private baseUrl: string = 'http://drive';
+  private baseUrl: string = '';
+  //private baseUrl: string = 'http://drive';
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(
       JSON.parse(localStorage.getItem('currentUser'))
@@ -22,8 +22,9 @@ export class LoginService {
   }
 
   loginSupport() {
-    window.location.href='https://support.seacraft.eu/drive/getUserData.php';
-    //return this.http.get<any>(`https://support.seacraft.eu/drive/getUserData.php`);
+    const secret = 'NEU!yhqp5GKDX,t06s3ikAow';
+    const authUrl = 'https://support.seacraft.eu/drive/getUserData.php?secret=';
+    window.location.href = authUrl + secret;
   }
 
   login(emailAddress: string, password: string) {

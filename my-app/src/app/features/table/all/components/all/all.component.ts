@@ -98,7 +98,6 @@ export class AllComponent implements OnInit {
   public deleteItems(): void {
     this.selectedFiles.forEach((element) => {
       const file = this.files.find((el) => el.id === element);
-      console.log(file.id);
       this.deleteSer.delete(file.id).subscribe((data) => {
         const indexOfItem = this.selectedFiles.indexOf(element);
         if (indexOfItem > -1) {
@@ -110,9 +109,7 @@ export class AllComponent implements OnInit {
   }
 
   public download(): void {
-    console.log(this.selectedFiles);
     this.downloads.download(this.selectedFiles).subscribe((blob) => {
-      console.log(blob);
       const a = document.createElement('a');
       const objectUrl = URL.createObjectURL(blob);
       a.href = objectUrl;
@@ -122,22 +119,6 @@ export class AllComponent implements OnInit {
       this.selectedFiles.length = 0;
       this.getFiles();
     });
-    /*this.selectedFiles.forEach((element) => {
-      const file = this.files.find((el) => el.id === element);
-      this.downloads.download(file.hash).subscribe((blob) => {
-        const a = document.createElement('a');
-        const objectUrl = URL.createObjectURL(blob);
-        a.href = objectUrl;
-        a.download = file.name;
-        a.click();
-        URL.revokeObjectURL(objectUrl);
-        const indexOfItem = this.selectedFiles.indexOf(element);
-        if (indexOfItem > -1) {
-          this.selectedFiles.splice(indexOfItem, 1);
-        }
-        this.getFiles();
-      });
-    });*/
   }
   public selectAll(): void {
     if (this.selectedFiles.length < 1) {
@@ -147,6 +128,5 @@ export class AllComponent implements OnInit {
     } else {
       this.selectedFiles.length = 0;
     }
-    console.log(this.selectedFiles);
   }
 }

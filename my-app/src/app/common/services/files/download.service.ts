@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DownloaddService {
-  //private baseUrl: string = '';
-  private baseUrl: string = 'http://drive';
+  private baseUrl: string = '';
+  //private baseUrl: string = 'http://drive';
   constructor(private http: HttpClient) {}
 
   download(files: any[]): Observable<any> {

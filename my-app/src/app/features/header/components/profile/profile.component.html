@@ -8,5 +8,8 @@
     <div class="dropdown__item">
       <div (click)="logout()">{{ "LOGOUT" | translate }}</div>
     </div>
+    <div *ngIf="currentUser.post < 3" (click)="users()" class="dropdown__item">
+      {{ "USERS" | translate }}
+    </div>
   </div>
 </div>

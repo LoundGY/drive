@@ -1,4 +1,8 @@
 {
+    "ALLOW":"Allow",
+    "BAN":"Ban",
+    "MODER":"Moderator",
+    "USERS":"Пользователи",
     "LOGOUT":"Выход",
     "ADDING":"Добавление",
     "ADD":"Добавить",

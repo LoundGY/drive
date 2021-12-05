@@ -3,6 +3,44 @@
     top: 70px;
     max-width: 1140px;
     margin: auto;
+    .support {
+        &__title {
+            color: #383838;
+            min-height: 30px;
+            font-size: 20px;
+            width: 280px;
+            line-height: 24px;
+        }
+
+        &__butt {
+            margin: 10px 0;
+            height: 44px;
+            background-color: #2e4554;
+            color: #fff;
+            border-radius: 99px;
+            font-size: 15px;
+            font-weight: bolder;
+            text-align: center;
+            width: 255px;
+            line-height: 44px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            border: none;
+            letter-spacing: 0.08rem;
+            text-transform: uppercase;
+            &:hover,
+            :active {
+                background: #feca2f;
+            }
+        }
+        &__default {
+            cursor: pointer;
+            &:hover,
+            :active {
+                text-decoration: underline;
+            }
+        }
+    }
     &__title {
         height: 28px;
         width: 100%;
@@ -14,8 +52,8 @@
     }
     &__form {
         position: relative;
-        width: 300px;
-        margin: auto;
+        width: 280px;
+        margin: 120px 0;
         .error {
             border-radius: 3px;
             border: 1px solid #c00;
@@ -51,23 +89,29 @@
             background: #2e4554;
             border-radius: 99px;
             border: 0;
-            padding: 12px 28px;
             font-size: 14px;
             font-weight: bold;
             color: #fff;
             text-shadow: none;
             cursor: pointer;
-            display: inline-block;
+            height: 40px;
+            width: 100px;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
             outline: 0;
             overflow: visible;
             margin: 0;
             text-decoration: none;
-            vertical-align: middle;
-            width: auto;
             &:hover,
             :active {
                 background: #feca2f;
             }
         }
+    }
+    @media (max-width: 1180px) {
+        padding: 0 10px;
+        box-sizing: border-box;
     }
 }

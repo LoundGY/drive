@@ -34,7 +34,6 @@ export class UploadComponent {
     this.prepareFilesList(files.target.files);
   }
   public prepareFilesList(files: any[]): void {
-    console.log(this.files);
     for (const item of files) {
       item.progress = 0;
       this.files.push(item);
@@ -46,7 +45,6 @@ export class UploadComponent {
     this.prepareFilesList($event);
   }
   public deleteFile(index: number): void {
-    console.log(index);
     this.filesProgress.delete(this.files[index]);
     this.files.splice(index, 1);
   }

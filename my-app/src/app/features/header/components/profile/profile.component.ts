@@ -29,9 +29,9 @@ export class ProfileComponent {
     private authenticationService: LoginService,
     private cdr: ChangeDetectorRef
   ) {
-    this.authenticationService.currentUser.subscribe(
-      (x) => (this.currentUser = x)
-    );
+    this.authenticationService.currentUser.subscribe((x) => {
+      this.currentUser = x;
+    });
     this.renderer.listen('window', 'click', (e: Event) => {
       if (this.menu && this.toggleButton) {
         if (
@@ -48,6 +48,10 @@ export class ProfileComponent {
   public logout(): void {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
+  }
+
+  public users(): void {
+    this.router.navigate(['/users']);
   }
 
   public toggleMenu(): void {

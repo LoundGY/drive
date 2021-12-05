@@ -1,0 +1,78 @@
+<div class="main-block">
+  <div class="main-block__top">
+    <div class="main-block__search">
+      <div class="search-icon"></div>
+      <input
+        [(ngModel)]="search"
+        (ngModelChange)="updateSearch()"
+        class="search"
+        placeholder="{{ 'SEARCH' | translate }}"
+        type="text"
+        name="search"
+      />
+    </div>
+    <div class="main-block__buttons">
+      <button
+        *ngIf="selectedUsers.length > 0"
+        class="button allow"
+        [disabled]="loading"
+        (click)="allow()"
+      >
+        <ng-container *ngIf="!loading; else Loading">
+          {{ "ALLOW" | translate }}</ng-container
+        >
+      </button>
+      <button
+        *ngIf="selectedUsers.length > 0"
+        class="button ban"
+        [disabled]="loading"
+        (click)="ban()"
+      >
+        <ng-container *ngIf="!loading; else Loading">
+          {{ "BAN" | translate }}</ng-container
+        >
+      </button>
+      <button
+        *ngIf="selectedUsers.length > 0"
+        class="button moder"
+        [disabled]="loading"
+        (click)="moder()"
+      >
+        <ng-container *ngIf="!loading; else Loading">
+          {{ "MODER" | translate }}</ng-container
+        >
+      </button>
+    </div>
+  </div>
+  <div class="main-block__users">
+    <div class="users__fields">
+      <div class="field all" (click)="selectAll()">
+        <mat-icon>crop_square</mat-icon>
+      </div>
+      <div (click)="sortUsers('login')" class="field">
+        {{ "TABLE.login" | translate
+        }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
+      </div>
+      <div (click)="sortUsers('email')" class="field">
+        {{ "TABLE.email" | translate
+        }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
+      </div>
+      <div (click)="sortUsers('post')" class="field">
+        {{ "TABLE.post" | translate
+        }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
+      </div>
+    </div>
+    <div class="files__all">
+      <app-user
+        *ngFor="let user of users"
+        [user]="user"
+        [choose]="selectedUsers.includes(user.id)"
+        (chooseItem)="chooseItem($event)"
+      ></app-user>
+    </div>
+  </div>
+</div>
+
+<ng-template #Loading>
+  <mat-spinner diameter="15"></mat-spinner>
+</ng-template>

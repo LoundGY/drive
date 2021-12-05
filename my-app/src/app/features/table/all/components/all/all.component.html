@@ -31,7 +31,9 @@
   <app-upload *ngIf="path === 'my'" (fileLoad)="getFiles()"></app-upload>
   <div class="main-block__files" [ngClass]="{ notMy: path !== 'my' }">
     <div class="files__fields">
-      <div class="field all" (click)="selectAll()"><mat-icon>select_all</mat-icon></div>
+      <div class="field all" (click)="selectAll()">
+        <mat-icon>crop_square</mat-icon>
+      </div>
       <div (click)="sortFiles('name')" class="field name">
         {{ "TABLE.name" | translate
         }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
