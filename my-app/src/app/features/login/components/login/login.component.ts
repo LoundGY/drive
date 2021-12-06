@@ -71,6 +71,18 @@ export class LoginComponent implements OnInit {
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.currentError = this.route.snapshot.queryParams['error'];
+    if (this.currentError == '4') {
+      const loginURL = 'https://support.seacraft.eu/wp-login.php';
+      window.open(
+        loginURL,
+        'Login',
+        'width=560, height=470, top=' +
+          (screen.height - 470) / 2 +
+          ',left=' +
+          (screen.width - 560) / 2 +
+          ', resizable=yes, scrollbars=no, status=yes'
+      );
+    }
   }
 
   get form() {
