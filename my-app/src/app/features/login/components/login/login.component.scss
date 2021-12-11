@@ -3,6 +3,15 @@
     top: 70px;
     max-width: 1140px;
     margin: auto;
+    min-height: calc(100% - 140px);
+    .error-link {
+        color: #383838;
+        font-weight: bolder;
+        &:hover,
+        :active {
+            text-decoration: underline;
+        }
+    }
     .support {
         &__title {
             color: #383838;

@@ -32,7 +32,16 @@
   <div class="main-block__files" [ngClass]="{ notMy: path !== 'my' }">
     <div class="files__fields">
       <div class="field all" (click)="selectAll()">
-        <mat-icon>crop_square</mat-icon>
+        <mat-icon
+          *ngIf="
+            selectedFiles.length === files.length && selectedFiles.length > 0;
+            else check
+          "
+          >check_box</mat-icon
+        >
+        <ng-template #check
+          ><mat-icon>check_box_outline_blank</mat-icon></ng-template
+        >
       </div>
       <div (click)="sortFiles('name')" class="field name">
         {{ "TABLE.name" | translate

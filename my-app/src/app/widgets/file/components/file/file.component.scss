@@ -1,5 +1,6 @@
 .fields {
     display: flex;
+    justify-content: space-between;
     height: 40px;
     line-height: 40px;
     text-align: center;
@@ -22,19 +23,45 @@
     }
     .name {
         min-width: 250px;
+        word-break: break-all;
+        overflow: hidden;
         flex-basis: calc(50% - 259px);
+        @media (max-width: 700px) {
+            min-width: auto;
+            flex-basis: calc(100% - 170px);
+        }
     }
     .author {
         min-width: 250px;
+        word-break: break-all;
+        overflow: hidden;
         flex-basis: calc(50% - 259px);
+        @media (max-width: 1300px) {
+            display: none;
+        }
     }
     .size {
         flex-basis: 150px;
+        word-break: break-all;
+        overflow: hidden;
+        @media (max-width: 700px) {
+            flex-basis: 120px;
+        }
     }
     .category {
         flex-basis: 150px;
+        word-break: break-all;
+        overflow: hidden;
+        @media (max-width: 700px) {
+            display: none;
+        }
     }
     .date {
         flex-basis: 170px;
+        word-break: break-all;
+        overflow: hidden;
+        @media (max-width: 700px) {
+            display: none;
+        }
     }
 }

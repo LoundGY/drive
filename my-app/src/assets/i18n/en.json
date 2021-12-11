@@ -48,7 +48,7 @@
     },
     "log_with":"Log in using your account on",
     "log_email":"Log in using your email",
-    "not_login":"Login first in support",
+    "not_login":"Login first in ",
     "not_allowed":"Wait for permission",
     "wait_allowed":"Wait for permission"
 }

@@ -90,6 +90,8 @@ video {
 }
 body {
 	background: #f4f5f5;
+	min-width: 360px;
+	min-height: 560px;
 }
 /* HTML5 display-role reset for older browsers */
 article,

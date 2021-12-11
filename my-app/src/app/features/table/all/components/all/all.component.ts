@@ -25,7 +25,7 @@ export class AllComponent implements OnInit {
   public search: string = '';
   public path: string = '';
   public selectedFiles: any[] = [];
-  public files: TableRow[];
+  public files: TableRow[]=[];
   private allFiles: TableRow[] = [];
 
   constructor(

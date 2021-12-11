@@ -47,17 +47,18 @@
   <div class="main-block__users">
     <div class="users__fields">
       <div class="field all" (click)="selectAll()">
-        <mat-icon>crop_square</mat-icon>
+        <mat-icon *ngIf="selectedUsers.length === users.length && selectedUsers.length>0; else check">check_box</mat-icon>
+        <ng-template #check><mat-icon>check_box_outline_blank</mat-icon></ng-template>
       </div>
-      <div (click)="sortUsers('login')" class="field">
+      <div (click)="sortUsers('login')" class="field login">
         {{ "TABLE.login" | translate
         }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
       </div>
-      <div (click)="sortUsers('email')" class="field">
+      <div (click)="sortUsers('email')" class="field email">
         {{ "TABLE.email" | translate
         }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
       </div>
-      <div (click)="sortUsers('post')" class="field">
+      <div (click)="sortUsers('post')" class="field post">
         {{ "TABLE.post" | translate
         }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
       </div>

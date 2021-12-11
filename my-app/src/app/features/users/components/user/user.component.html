@@ -4,7 +4,7 @@
   (click)="chooseItemDone(user.id)"
 >
   <div class="fields__first"><input type="checkbox" [checked]="checked" /></div>
-  <div class="fields__field">{{ user.login }}</div>
-  <div class="fields__field">{{ user.email }}</div>
-  <div class="fields__field">{{ "POSTS.post" + user.post | translate }}</div>
+  <div class="fields__field login">{{ user.login }}</div>
+  <div class="fields__field email">{{ user.email }}</div>
+  <div class="fields__field post">{{ "POSTS.post" + user.post | translate }}</div>
 </div>

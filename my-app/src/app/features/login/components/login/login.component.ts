@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.currentError = this.route.snapshot.queryParams['error'];
-    if (this.currentError == '4') {
+    if (this.currentError == '4' || this.currentError == '1') {
       const loginURL = 'https://support.seacraft.eu/wp-login.php';
       window.open(
         loginURL,

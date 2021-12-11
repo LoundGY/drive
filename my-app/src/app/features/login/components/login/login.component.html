@@ -2,7 +2,16 @@
   <div class="login__title">Drive</div>
   <div class="login__form">
     <div *ngIf="currentError" class="error">
-      <span>{{ errorMap.get(currentError) | translate }}</span>
+      <span
+        >{{ errorMap.get(currentError) | translate }}
+        <a
+          *ngIf="currentError == '1' || currentError == '4'"
+          target="_blank"
+          class="error-link"
+          href="https://support.seacraft.eu/wp-login.php"
+          >Support</a
+        >
+      </span>
     </div>
     <div class="support">
       <div class="support__title">{{ "log_with" | translate }}</div>

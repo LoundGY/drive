@@ -1,16 +1,16 @@
 .main-block {
     position: relative;
     margin: auto;
-    height: calc(100% - 136px);
+    height: calc(100% - 172px);
     width: calc(100% - 50px);
     box-sizing: border-box;
     &__top {
         position: relative;
-        top: 35px;
+        margin-top: 35px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 44px;
+        flex-wrap: wrap;
     }
     &__search {
         position: relative;
@@ -28,6 +28,9 @@
             &::before {
                 content: "";
             }
+            @media (max-width: 920px) {
+                width: 300px;
+            }
         }
         .search-icon {
             position: absolute;
@@ -36,6 +39,9 @@
             background: url("../../../../../assets/img/search.svg");
             width: 11.5px;
             height: 11.5px;
+        }
+        @media (max-width: 920px) {
+            width: 300px;
         }
     }
     &__buttons {
@@ -84,19 +90,22 @@
                 background: #1ab340;
             }
         }
+        @media (max-width: 690px) {
+            margin: 10px 0 0;
+        }
     }
     &__users {
-        position: absolute;
+        position: relative;
         bottom: 0;
-        margin-top: 29px;
+        margin-top: 10px;
         background: #ffffff;
         z-index: 1;
-        height: calc(100% - 105px);
+        height: calc(100% - 63px);
         width: 100%;
         box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.05);
         border-radius: 15px;
         box-sizing: border-box;
-        max-height: calc(100% - 71px);
+        max-height: calc(100% - 63px);
         .users__all {
             overflow: auto;
             height: calc(100% - 49px);
@@ -108,6 +117,9 @@
             background: #fdc303;
             border-radius: 15px 15px 0 0;
             text-align: center;
+            justify-content: space-between;
+            @media (max-width: 670px) {
+            }
         }
         .field {
             position: relative;
@@ -131,11 +143,29 @@
                 color: #373737;
             }
         }
+        .email {
+            @media (max-width: 670px) {
+                display: none;
+            }
+        }
+        .login {
+            @media (max-width: 670px) {
+                flex-basis: calc(100% - 170px);
+            }
+        }
+        .post {
+            @media (max-width: 670px) {
+                flex-basis: 150px;
+            }
+        }
         .all {
             flex-basis: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        @media (max-width: 690px) {
+            height: calc(100% - 92px);
         }
     }
 }

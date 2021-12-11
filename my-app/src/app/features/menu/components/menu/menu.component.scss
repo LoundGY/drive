@@ -5,16 +5,23 @@ input,
 select {
     outline: none;
 }
+.nav {
+    position: relative;
+    height: calc(100% - 136px);
+    width: 307px;
+}
 .mainMenu {
     position: absolute;
     background: #ffffff;
     z-index: 1;
-    height: calc(100% - 136px);
-    width: 307px;
+    height: 100%;
+    width: 100%;
     box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.05);
     border-radius: 0 0 15px 0;
     padding: 32px;
     box-sizing: border-box;
+    transition: all 0.3s;
+    overflow: auto;
     &__drive {
         text-align: left;
         font-weight: bold;
@@ -80,6 +87,48 @@ select {
             background: #d9d9d9;
             font-weight: bold;
             border-radius: 20px;
+        }
+    }
+    @media (max-width: 990px) {
+        display: none;
+    }
+}
+.sidebarIconToggle {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: absolute;
+    z-index: 101;
+    height: 22px;
+    width: 22px;
+    display: none;
+    top: 5px;
+    left: 10px;
+    @media (max-width: 990px) {
+        display: block;
+    }
+}
+
+input[type="checkbox"] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+    &:checked {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        opacity: 0;
+        & ~ #sidebarMenu {
+            display: block;
+            z-index: 55;
+        }
+        & ~ .nav {
+            z-index: 55;
+        }
+        & ~ .sidebarIconToggle {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            transform: rotate(135deg);
+            margin-top: 8px;
         }
     }
 }

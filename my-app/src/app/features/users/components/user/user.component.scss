@@ -5,6 +5,7 @@
     text-align: center;
     box-sizing: border-box;
     border-bottom: 1px double #e6e6e6;
+    justify-content: space-between;
     &:hover {
         background: #eaeaea;
     }
@@ -13,6 +14,27 @@
     }
     &__field {
         flex-basis: calc(33% - 22px);
+    }
+    .email {
+        word-break: break-all;
+        overflow: hidden;
+        @media (max-width: 670px) {
+            display: none;
+        }
+    }
+    .login {
+        word-break: break-all;
+        overflow: hidden;
+        @media (max-width: 670px) {
+            flex-basis: calc(100% - 170px);
+        }
+    }
+    .post {
+        word-break: break-all;
+        overflow: hidden;
+        @media (max-width: 670px) {
+            flex-basis: 150px;
+        }
     }
     &.checked {
         background: #eaeaea;

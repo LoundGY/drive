@@ -10,7 +10,7 @@ import { Users } from 'src/app/common/services/users/users.service';
 export class UsersComponent implements OnInit {
   private allUsers: User[] = [];
   public search: string = '';
-  public users: User[];
+  public users: User[] = [];
   public loading: boolean = false;
   public selectedUsers: any[] = [];
 

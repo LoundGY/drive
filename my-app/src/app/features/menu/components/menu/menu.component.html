@@ -1,23 +1,36 @@
-<div class="mainMenu">
-  <h1 class="mainMenu__drive">Drive</h1>
-  <div (click)="addFiles()" class="mainMenu__addFileButton">
-    <span class="text">{{ "ADD" | translate }}</span
-    >{{ " " }}
-    <img class="largePlus" src="{{ plus }}" />
-  </div>
-  <ul class="mainMenu__menu">
-    <li
-      *ngFor="let item of menuRoutes; let i = index"
-      routerLink="./{{ item }}"
-      class="menu-point"
-      [class.active]="index === i"
-      (click)="changeIndex(i)"
-    >
-      {{ "MENU." + item | translate }}
-    </li>
-  </ul>
-  <div class="mainMenu__space">
-    {{spaceSize}}
+<div class="nav">
+  <input
+    type="checkbox"
+    [checked]="menuIsOpen"
+    (change)="menuIsOpen = !menuIsOpen"
+    class="openSidebarMenu"
+    id="openSidebarMenu"
+    #openSidebarMenu
+  />
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <mat-icon>menu</mat-icon>
+  </label>
+  <div id="sidebarMenu" #sidebarMenu class="mainMenu">
+    <h1 class="mainMenu__drive">Drive</h1>
+    <div (click)="addFiles()" class="mainMenu__addFileButton">
+      <span class="text">{{ "ADD" | translate }}</span
+      >{{ " " }}
+      <img class="largePlus" src="{{ plus }}" />
+    </div>
+    <ul class="mainMenu__menu">
+      <li
+        *ngFor="let item of menuRoutes; let i = index"
+        routerLink="./{{ item }}"
+        class="menu-point"
+        [class.active]="index === i"
+        (click)="changeIndex(i)"
+      >
+        {{ "MENU." + item | translate }}
+      </li>
+    </ul>
+    <div class="mainMenu__space">
+      {{ spaceSize }}
+    </div>
   </div>
 </div>
 <router-outlet></router-outlet>
