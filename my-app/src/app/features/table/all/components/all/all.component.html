@@ -13,14 +13,17 @@
     </div>
     <div class="main-block__buttons">
       <div
-        *ngIf="selectedFiles.length > 0 && currentUser.post == 1"
+        *ngIf="
+          (selectedFiles.length > 0 || selectedFolders.length > 0) &&
+          currentUser.post == 1
+        "
         class="button delete"
         (click)="deleteItems()"
       >
         {{ "DELETE" | translate }}
       </div>
       <div
-        *ngIf="selectedFiles.length > 0"
+        *ngIf="selectedFiles.length > 0 || selectedFolders.length > 0"
         (click)="download()"
         class="button download"
       >
@@ -35,7 +38,10 @@
         <div class="field all" (click)="selectAll()">
           <mat-icon
             *ngIf="
-              selectedFiles.length === files.length && selectedFiles.length > 0;
+              selectedFiles.length === files.length &&
+                selectedFiles.length > 0 &&
+                selectedFolders.length === folders.length &&
+                selectedFolders.length > 0;
               else check
             "
             >check_box</mat-icon
@@ -66,6 +72,12 @@
         </div>
       </div>
       <div class="files__all">
+        <app-folder
+          *ngFor="let folder of folders"
+          [folder]="folder"
+          [choose]="selectedFolders.includes(folder)"
+          (chooseFolder)="chooseFolder($event)"
+        ></app-folder>
         <app-file
           *ngFor="let file of files"
           [file]="file"

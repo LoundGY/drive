@@ -10,6 +10,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { UploadService } from 'src/app/common/services/files/upload.service';
 
@@ -21,6 +22,8 @@ import { UploadService } from 'src/app/common/services/files/upload.service';
 })
 export class UploadComponent {
   @Output() fileLoad = new EventEmitter<any>();
+  @ViewChild('fileDropRef', { static: false })
+  fileInput: ElementRef | undefined;
   public files: File[] = [];
   public filesProgress = new Map();
   public message = '';
@@ -28,6 +31,7 @@ export class UploadComponent {
 
   constructor(
     private uploadService: UploadService,
+    private activeRoute: ActivatedRoute,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -37,6 +41,7 @@ export class UploadComponent {
     }
   }
   public prepareFilesList(file: any): void {
+    this.fileInput.nativeElement.value = '';
     file.progress = 0;
     if (!file.path) {
       file.path = '/' + file.name;
@@ -53,48 +58,40 @@ export class UploadComponent {
     this.files.splice(index, 1);
   }
   public upload(): void {
+    const whereRoute = this.activeRoute.snapshot.queryParams.directory;
     for (let i = 0; i < this.files.length; i++) {
       if (!(this.filesProgress.get(this.files[i]) > 0)) {
         this.filesProgress.set(this.files[i], 0.1);
-        const upload$ = this.uploadService.upload(this.files[i]).subscribe(
-          (event) => {
-            if (event.type === HttpEventType.UploadProgress) {
-              this.filesProgress.set(
-                this.files[i],
-                Math.round((100 * event.loaded) / event.total)
-              );
-              if (!this.files[i]) {
-                upload$.unsubscribe();
+        const upload$ = this.uploadService
+          .upload(this.files[i], whereRoute)
+          .subscribe(
+            (event) => {
+              if (event.type === HttpEventType.UploadProgress) {
+                this.filesProgress.set(
+                  this.files[i],
+                  Math.round((100 * event.loaded) / event.total)
+                );
+                if (!this.files[i]) {
+                  upload$.unsubscribe();
+                }
+                if (this.filesProgress.get(this.files[i]) === 100) {
+                  setTimeout(() => {
+                    this.files.splice(this.files.indexOf(this.files[i]), 1);
+                    this.filesProgress.delete(this.files[i]);
+                    this.fileLoad.emit();
+                    this.cdr.detectChanges();
+                  }, 1000);
+                }
+              } else if (event instanceof HttpResponse) {
+                this.message = event.body.message;
               }
-              if (this.filesProgress.get(this.files[i]) === 100) {
-                setTimeout(() => {
-                  this.files.splice(this.files.indexOf(this.files[i]), 1);
-                  this.filesProgress.delete(this.files[i]);
-                  this.fileLoad.emit();
-                  this.cdr.detectChanges();
-                }, 1000);
-              }
-            } else if (event instanceof HttpResponse) {
-              this.message = event.body.message;
+              this.cdr.detectChanges();
+            },
+            (err) => {
+              this.message = 'Could not upload the file!';
             }
-            this.cdr.detectChanges();
-          },
-          (err) => {
-            this.message = 'Could not upload the file!';
-          }
-        );
+          );
       }
     }
-  }
-  public delete(): void {}
-  public formatBytes(bytes, decimals = 2): string {
-    if (bytes === 0) {
-      return '0 Bytes';
-    }
-    const k = 1024;
-    const dm = decimals <= 0 ? 0 : decimals;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
 }

@@ -6,14 +6,19 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DownloaddService {
-  //private baseUrl: string = '';
-  private baseUrl: string = 'http://drive';
+  private baseUrl: string = '';
+  //private baseUrl: string = 'http://drive';
   constructor(private http: HttpClient) {}
 
-  download(files: any[]): Observable<any> {
+  download(files: any[], folders: any[], directory: string): Observable<any> {
     const ids = files.join('|');
     return this.http.get(
-      `${this.baseUrl}/functions/drive/download?ids=` + ids,
+      `${this.baseUrl}/functions/drive/download?ids=` +
+        ids +
+        '&current=' +
+        directory +
+        `&folders=` +
+        JSON.stringify(folders),
       {
         responseType: 'blob',
       }

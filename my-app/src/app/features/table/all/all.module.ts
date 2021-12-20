@@ -10,9 +10,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { AllComponent } from './components/all/all.component';
 import { AllFiles } from '../../../common/services/files/all-files.service';
 import { UploadModule } from 'src/app/widgets/upload/upload.module';
+import { FolderComponent } from './components/folder/folder.component';
 
 @NgModule({
-  declarations: [AllComponent],
+  declarations: [AllComponent, FolderComponent],
   imports: [
     CommonModule,
     FormsModule,

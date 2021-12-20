@@ -1,0 +1,15 @@
+<div
+  class="fields"
+  [class.checked]="checked === true"
+  (click)="chooseItemDone(folder)"
+  (dblclick)="openFolder(folder)"
+  [class.back]="this.folder.name === '...'"
+>
+  <div *ngIf="this.folder.name !== '...'" class="fields__first">
+    <input type="checkbox" [checked]="checked" />
+  </div>
+  <div class="fields__field name" title="{{ folder.name }}">
+    <mat-icon>folder_open</mat-icon>
+    {{ folder.name }}
+  </div>
+</div>

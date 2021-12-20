@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UploadService {
-  //private baseUrl: string = '';
-  private baseUrl: string = 'http://drive';
+  private baseUrl: string = '';
+  //private baseUrl: string = 'http://drive';
   constructor(private http: HttpClient) {}
 
-  upload(file: File): Observable<HttpEvent<any>> {
+  upload(file: File, path: string = '/'): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
-    console.log(file);
     formData.append('file', file);
+    formData.append('where', path);
     formData.append('path', (file as any).path);
 
     const req = new HttpRequest(

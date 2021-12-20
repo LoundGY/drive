@@ -19,7 +19,6 @@ import { HeaderModule } from './features/header/header.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorInterceptor } from './common/services/login/error.interceptor';
 import { JwtInterceptor } from './common/services/login/jwt.interceptor';
-import { GenerateCategory } from 'src/app/common/services/generate-category.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -46,7 +45,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    GenerateCategory,
   ],
   bootstrap: [AppComponent],
 })

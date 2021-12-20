@@ -6,7 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FileTitlePipe implements PipeTransform {
   transform(value: string, args?: any): string {
     let length = args ? args : 25;
-
     if (value.length < length) {
       return value;
     }

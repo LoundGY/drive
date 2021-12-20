@@ -6,8 +6,8 @@ import { User } from 'src/app/common/interfaces/user.interface';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
-  //private baseUrl: string = '';
-  private baseUrl: string = 'http://drive';
+  private baseUrl: string = '';
+  //private baseUrl: string = 'http://drive';
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 

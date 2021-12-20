@@ -3,14 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { TableRow } from '../../interfaces/table.interface';
 import { Observable, from } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import { GenerateCategory } from '../generate-category.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AllFiles {
-  //private baseUrl: string = '';
-  private baseUrl: string = 'http://drive';
+  private baseUrl: string = '';
+  //private baseUrl: string = 'http://drive';
   public dataFiles;
   public files: TableRow[] = [];
   public file: TableRow = {
@@ -23,13 +22,17 @@ export class AllFiles {
     hash: '',
   };
 
-  constructor(private http: HttpClient, private genCat: GenerateCategory) {}
+  constructor(private http: HttpClient) {}
 
-  getData(type: string = 'all'): Observable<any> {
+  getData(type: string = 'all', directory: string = ''): Observable<any> {
     this.files.length = 0;
     const files$ = this.http
-      .get(`${this.baseUrl}/functions/drive/files.php?category=` + type)
-      .pipe(map((data: any) => data.data));
+      .get(
+        `${this.baseUrl}/functions/drive/files.php?category=` +
+          type +
+          `&directory=` +
+          directory
+      );
     return files$;
   }
 }
