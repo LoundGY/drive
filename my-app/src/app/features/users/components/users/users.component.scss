@@ -159,10 +159,18 @@
             }
         }
         .all {
-            flex-basis: 50px;
+            flex-basis: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
+            mat-icon {
+                font-size: 13px;
+                height: 12px;
+                width: 12px;
+            }
+            &::after {
+                content: none !important;
+            }
         }
         @media (max-width: 690px) {
             height: calc(100% - 92px);

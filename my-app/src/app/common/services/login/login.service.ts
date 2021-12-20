@@ -6,10 +6,11 @@ import { User } from 'src/app/common/interfaces/user.interface';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
+  //private baseUrl: string = '';
+  private baseUrl: string = 'http://drive';
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
-  private baseUrl: string = '';
-  //private baseUrl: string = 'http://drive';
+
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(
       JSON.parse(localStorage.getItem('currentUser'))

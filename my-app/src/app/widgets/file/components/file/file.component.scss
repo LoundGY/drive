@@ -10,7 +10,7 @@
         background: #eaeaea;
     }
     &__first {
-        flex-basis: 50px;
+        flex-basis: 25px;
     }
     &__field {
         flex-basis: calc(20% - 10px);
@@ -19,7 +19,7 @@
         background: #eaeaea;
     }
     .all {
-        flex-basis: 50px;
+        flex-basis: 25px;
     }
     .name {
         min-width: 250px;
@@ -27,8 +27,8 @@
         overflow: hidden;
         flex-basis: calc(50% - 259px);
         @media (max-width: 700px) {
-            min-width: auto;
-            flex-basis: calc(100% - 170px);
+            //min-width: auto;
+            //flex-basis: calc(100% - 170px);
         }
     }
     .author {
@@ -37,7 +37,7 @@
         overflow: hidden;
         flex-basis: calc(50% - 259px);
         @media (max-width: 1300px) {
-            display: none;
+            // display: none;
         }
     }
     .size {
@@ -45,7 +45,7 @@
         word-break: break-all;
         overflow: hidden;
         @media (max-width: 700px) {
-            flex-basis: 120px;
+            //flex-basis: 120px;
         }
     }
     .category {
@@ -53,7 +53,7 @@
         word-break: break-all;
         overflow: hidden;
         @media (max-width: 700px) {
-            display: none;
+            //display: none;
         }
     }
     .date {
@@ -61,7 +61,7 @@
         word-break: break-all;
         overflow: hidden;
         @media (max-width: 700px) {
-            display: none;
+            //display: none;
         }
     }
 }

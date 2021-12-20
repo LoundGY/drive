@@ -19,7 +19,6 @@ export class MenuComponent implements OnInit {
   @ViewChild('sidebarMenu') menu: ElementRef;
   public plus: string = '../../../assets/img/plus.svg';
   public menuRoutes: string[] = ['my', 'all', 'map', 'image', 'movie', 'other'];
-  public index: number = 0;
   public spaceSize: String = '';
   public menuIsOpen: boolean = false;
 
@@ -43,43 +42,6 @@ export class MenuComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    switch (this.router.url) {
-      case '/drive/my':
-        {
-          this.index = 0;
-        }
-        break;
-      case '/drive/all':
-        {
-          this.index = 1;
-        }
-        break;
-      case '/drive/map':
-        {
-          this.index = 2;
-        }
-        break;
-      case '/drive/image':
-        {
-          this.index = 3;
-        }
-        break;
-      case '/drive/movie':
-        {
-          this.index = 4;
-        }
-        break;
-      case '/drive/other':
-        {
-          this.index = 5;
-        }
-        break;
-      default:
-        {
-          this.index = 0;
-        }
-        break;
-    }
     this.getSpace();
   }
 
@@ -95,7 +57,6 @@ export class MenuComponent implements OnInit {
       inp.click();
     } else {
       this.router.navigateByUrl('/drive/my');
-      this.index = 0;
       setTimeout(() => {
         const inp1 = document.getElementById('fileZone');
         if (inp1) {
@@ -105,8 +66,7 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  public changeIndex(newIndex: number): void {
-    this.index = newIndex;
+  public changeIndex(): void {
     this.getSpace();
   }
 }

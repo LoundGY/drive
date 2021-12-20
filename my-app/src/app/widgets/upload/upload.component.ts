@@ -1,4 +1,5 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { findLast } from '@angular/compiler/src/directive_resolver';
 import {
   Component,
   ViewChild,
@@ -31,14 +32,17 @@ export class UploadComponent {
   ) {}
 
   public fileBrowseHandler(files): void {
-    this.prepareFilesList(files.target.files);
-  }
-  public prepareFilesList(files: any[]): void {
-    for (const item of files) {
-      item.progress = 0;
-      this.files.push(item);
-      this.filesProgress.set(item, 0);
+    for (let i = 0; i < files.target.files.length; i++) {
+      this.prepareFilesList(files.target.files[i]);
     }
+  }
+  public prepareFilesList(file: any): void {
+    file.progress = 0;
+    if (!file.path) {
+      file.path = '/' + file.name;
+    }
+    this.files.push(file);
+    this.filesProgress.set(file, 0);
     this.upload();
   }
   public onFileDropped($event): void {
@@ -51,6 +55,7 @@ export class UploadComponent {
   public upload(): void {
     for (let i = 0; i < this.files.length; i++) {
       if (!(this.filesProgress.get(this.files[i]) > 0)) {
+        this.filesProgress.set(this.files[i], 0.1);
         const upload$ = this.uploadService.upload(this.files[i]).subscribe(
           (event) => {
             if (event.type === HttpEventType.UploadProgress) {

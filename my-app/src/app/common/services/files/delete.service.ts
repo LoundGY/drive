@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DeleteService {
-  private baseUrl: string = '';
-  //private baseUrl: string = 'http://drive';
+  //private baseUrl: string = '';
+  private baseUrl: string = 'http://drive';
   constructor(private http: HttpClient) {}
 
   delete(file: number): Observable<any> {

@@ -19,11 +19,11 @@
     </div>
     <ul class="mainMenu__menu">
       <li
-        *ngFor="let item of menuRoutes; let i = index"
+        *ngFor="let item of menuRoutes"
         routerLink="./{{ item }}"
         class="menu-point"
-        [class.active]="index === i"
-        (click)="changeIndex(i)"
+        routerLinkActive="active"
+        (click)="changeIndex()"
       >
         {{ "MENU." + item | translate }}
       </li>

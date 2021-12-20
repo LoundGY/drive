@@ -29,48 +29,50 @@
     </div>
   </div>
   <app-upload *ngIf="path === 'my'" (fileLoad)="getFiles()"></app-upload>
-  <div class="main-block__files" [ngClass]="{ notMy: path !== 'my' }">
-    <div class="files__fields">
-      <div class="field all" (click)="selectAll()">
-        <mat-icon
-          *ngIf="
-            selectedFiles.length === files.length && selectedFiles.length > 0;
-            else check
-          "
-          >check_box</mat-icon
-        >
-        <ng-template #check
-          ><mat-icon>check_box_outline_blank</mat-icon></ng-template
-        >
+  <div class="all-files" [ngClass]="{ notMy: path !== 'my' }">
+    <div class="main-block__files">
+      <div class="files__fields">
+        <div class="field all" (click)="selectAll()">
+          <mat-icon
+            *ngIf="
+              selectedFiles.length === files.length && selectedFiles.length > 0;
+              else check
+            "
+            >check_box</mat-icon
+          >
+          <ng-template #check
+            ><mat-icon>check_box_outline_blank</mat-icon></ng-template
+          >
+        </div>
+        <div (click)="sortFiles('name')" class="field name">
+          {{ "TABLE.name" | translate
+          }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
+        </div>
+        <div (click)="sortFiles('author')" class="field author">
+          {{ "TABLE.author" | translate
+          }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
+        </div>
+        <div (click)="sortFiles('size')" class="field size">
+          {{ "TABLE.size" | translate
+          }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
+        </div>
+        <div (click)="sortFiles('category')" class="field category">
+          {{ "TABLE.category" | translate
+          }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
+        </div>
+        <div (click)="sortFiles('date')" class="field date">
+          {{ "TABLE.date" | translate
+          }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
+        </div>
       </div>
-      <div (click)="sortFiles('name')" class="field name">
-        {{ "TABLE.name" | translate
-        }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
+      <div class="files__all">
+        <app-file
+          *ngFor="let file of files"
+          [file]="file"
+          [choose]="selectedFiles.includes(file.id)"
+          (chooseItem)="chooseItem($event)"
+        ></app-file>
       </div>
-      <div (click)="sortFiles('author')" class="field author">
-        {{ "TABLE.author" | translate
-        }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
-      </div>
-      <div (click)="sortFiles('size')" class="field size">
-        {{ "TABLE.size" | translate
-        }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
-      </div>
-      <div (click)="sortFiles('category')" class="field category">
-        {{ "TABLE.category" | translate
-        }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
-      </div>
-      <div (click)="sortFiles('date')" class="field date">
-        {{ "TABLE.date" | translate
-        }}<span class="down"><mat-icon>arrow_drop_down</mat-icon></span>
-      </div>
-    </div>
-    <div class="files__all">
-      <app-file
-        *ngFor="let file of files"
-        [file]="file"
-        [choose]="selectedFiles.includes(file.id)"
-        (chooseItem)="chooseItem($event)"
-      ></app-file>
     </div>
   </div>
 </div>

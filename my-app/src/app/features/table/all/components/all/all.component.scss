@@ -1,3 +1,8 @@
+.all-files {
+    position: relative;
+    height: calc(100% - 289px);
+    overflow: auto;
+}
 .main-block {
     position: absolute;
     left: 335px;
@@ -88,7 +93,7 @@
         }
     }
     .notMy {
-        height: calc(100% - 89px);
+        height: calc(100% - 79px);
     }
     &__files {
         position: relative;
@@ -96,12 +101,12 @@
         margin-top: 10px;
         background: #ffffff;
         z-index: 1;
-        height: calc(100% - 299px);
+        height: calc(100% - 10px);
         width: 100%;
+        min-width: 970px;
         box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.05);
         border-radius: 15px;
         box-sizing: border-box;
-        max-height: calc(100% - 71px);
         .files__all {
             overflow: auto;
             height: calc(100% - 49px);
@@ -138,51 +143,59 @@
             }
         }
         .all {
-            flex-basis: 50px;
+            flex-basis: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
+            mat-icon {
+                font-size: 13px;
+                height: 12px;
+                width: 12px;
+            }
+            &::after {
+                content: none !important;
+            }
         }
         .name {
             min-width: 250px;
             flex-basis: calc(50% - 259px);
             @media (max-width: 700px) {
-                min-width: auto;
-                flex-basis: calc(100% - 170px);
+                //min-width: auto;
+                //flex-basis: calc(100% - 170px);
             }
         }
         .author {
             min-width: 250px;
             flex-basis: calc(50% - 259px);
             @media (max-width: 1300px) {
-                display: none;
+                // display: none;
             }
         }
         .size {
             flex-basis: 150px;
             @media (max-width: 700px) {
-                flex-basis: 120px;
-                &.field {
+                //flex-basis: 120px;
+                /*&.field {
                     &::after {
                         content: none;
                     }
-                }
+                }*/
             }
         }
         .category {
             flex-basis: 150px;
             @media (max-width: 700px) {
-                display: none;
+                //  display: none;
             }
         }
         .date {
             flex-basis: 170px;
             @media (max-width: 700px) {
-                display: none;
+                // display: none;
             }
         }
         @media (max-width: 990px) {
-            height: calc(100% - 200px);
+            // height: calc(100% - 200px);
         }
         @media (max-width: 630px) {
             position: relative;
