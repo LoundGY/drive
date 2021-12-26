@@ -48,7 +48,7 @@ export class UploadComponent {
     }
     this.files.push(file);
     this.filesProgress.set(file, 0);
-    this.upload();
+    this.upload(file);
   }
   public onFileDropped($event): void {
     this.prepareFilesList($event);
@@ -57,41 +57,34 @@ export class UploadComponent {
     this.filesProgress.delete(this.files[index]);
     this.files.splice(index, 1);
   }
-  public upload(): void {
+  public upload(file): void {
     const whereRoute = this.activeRoute.snapshot.queryParams.directory;
-    for (let i = 0; i < this.files.length; i++) {
-      if (!(this.filesProgress.get(this.files[i]) > 0)) {
-        this.filesProgress.set(this.files[i], 0.1);
-        const upload$ = this.uploadService
-          .upload(this.files[i], whereRoute)
-          .subscribe(
-            (event) => {
-              if (event.type === HttpEventType.UploadProgress) {
-                this.filesProgress.set(
-                  this.files[i],
-                  Math.round((100 * event.loaded) / event.total)
-                );
-                if (!this.files[i]) {
-                  upload$.unsubscribe();
-                }
-                if (this.filesProgress.get(this.files[i]) === 100) {
-                  setTimeout(() => {
-                    this.files.splice(this.files.indexOf(this.files[i]), 1);
-                    this.filesProgress.delete(this.files[i]);
-                    this.fileLoad.emit();
-                    this.cdr.detectChanges();
-                  }, 1000);
-                }
-              } else if (event instanceof HttpResponse) {
-                this.message = event.body.message;
-              }
-              this.cdr.detectChanges();
-            },
-            (err) => {
-              this.message = 'Could not upload the file!';
-            }
+    const upload$ = this.uploadService.upload(file, whereRoute).subscribe(
+      (event) => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.filesProgress.set(
+            file,
+            Math.round((100 * event.loaded) / event.total)
           );
+          if (!file) {
+            upload$.unsubscribe();
+          }
+          if (this.filesProgress.get(file) === 100) {
+            setTimeout(() => {
+              this.files.splice(this.files.indexOf(file), 1);
+              this.filesProgress.delete(file);
+              this.fileLoad.emit();
+              this.cdr.detectChanges();
+            }, 1000);
+          }
+        } else if (event instanceof HttpResponse) {
+          this.message = event.body.message;
+        }
+        this.cdr.detectChanges();
+      },
+      (err) => {
+        this.message = 'Could not upload the file!';
       }
-    }
+    );
   }
 }

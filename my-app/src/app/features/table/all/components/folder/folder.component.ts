@@ -32,7 +32,12 @@ export class FolderComponent implements OnChanges {
   }
 
   public openFolder(folder) {
-    this.router.navigateByUrl('?directory=' + folder.path);
+    const current = this.router.url.split('/');
+    console.log('../' + current[current.length - 1]);
+    this.router.navigate([], {
+      relativeTo: this.activeRoute,
+      queryParams: { directory: folder.path },
+    });
   }
   public chooseItemDone(folder: any): void {
     if (this.folder.name !== '...') {
